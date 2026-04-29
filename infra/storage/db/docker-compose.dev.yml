@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: postgres-db
+    restart: always
+    env_file:
+      - ../../../.env.dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - traefik-net
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ../../../.env.dev
+    depends_on:
+      - db
+    networks:
+      - traefik-net
+    volumes:
+      - ./alembic/versions:/app/alembic/versions
+
+volumes:
+  db_data:
+
+networks:
+  traefik-net:
+    name: traefik-net
+    external: true

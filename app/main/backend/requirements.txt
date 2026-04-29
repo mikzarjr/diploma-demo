@@ -1,0 +1,39 @@
+# Web
+fastapi==0.135.3
+uvicorn==0.44.0
+python-multipart==0.0.26
+
+# ML
+# NOTE: torchcodec is auto-pulled by pyannote.audio 4.x. Its native lib fails
+# to load on CPU images (libnvrtc.so missing), but pyannote handles this
+# gracefully via soft try/except in core/io.py — we always pass pre-decoded
+# waveform tensors so the decoder is never used at runtime. transformers 4.46
+# also avoids hard-importing torchcodec.
+torch==2.8.0
+torchaudio==2.8.0
+transformers==4.46.3
+librosa==0.11.0
+pyannote.audio>=4.0,<4.1
+huggingface_hub>=0.32,<1.0
+# matplotlib + soundfile pulled by pyannote.audio (>=3.10 / >=0.13)
+
+# Storage
+boto3==1.42.89
+asyncpg==0.31.0
+sqlalchemy==2.0.49
+
+# LLM
+httpx==0.28.1
+
+# Config
+pydantic_settings==2.13.1
+python-dotenv==1.2.2
+
+# Auth
+pyjwt==2.10.1
+bcrypt==4.3.0
+
+# Queue
+celery==5.4.0
+redis==5.2.1
+tenacity==9.0.0

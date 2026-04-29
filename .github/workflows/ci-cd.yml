@@ -1,0 +1,66 @@
+name: CI for project
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+
+      - name: Deploy via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} bash << 'EOF'
+          set -e  # выход при любой ошибке
+          
+          BASE_DIR=/opt/ai-calls-analytics
+          
+          echo "=== Updating repo ==="
+          cd $BASE_DIR
+          git pull
+
+          echo "=== Ensuring traefik-net exists ==="
+          docker network inspect traefik-net >/dev/null 2>&1 || docker network create traefik-net
+
+          echo "=== Deploying Gateway ==="
+          docker compose -f $BASE_DIR/infra/gateway/docker-compose.prod.yml down
+          docker compose -f $BASE_DIR/infra/gateway/docker-compose.prod.yml up -d --build
+          
+          echo "=== Deploying Storage ==="
+          echo "=== Deploying DB ==="
+          docker compose -f $BASE_DIR/infra/storage/db/docker-compose.prod.yml down
+          docker compose -f $BASE_DIR/infra/storage/db/docker-compose.prod.yml up -d --build
+          
+          echo "=== Deploying S3 ==="
+          docker compose -f $BASE_DIR/infra/storage/s3/docker-compose.prod.yml down
+          docker compose -f $BASE_DIR/infra/storage/s3/docker-compose.prod.yml up -d --build
+          
+          echo "=== Deploying App ==="
+          APP_DIR=$BASE_DIR/app
+          echo "=== Deploying Main ==="
+          docker compose -f $APP_DIR/main/docker-compose.prod.yml down
+          docker compose -f $APP_DIR/main/docker-compose.prod.yml up -d --build
+          
+          echo "=== Cleaning up old Docker images ==="
+          docker image prune -af
+          docker builder prune -af
+          docker container prune -f
+          docker network prune -f
+
+          echo "=== Deployment completed ==="
+          EOF

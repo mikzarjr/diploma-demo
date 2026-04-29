@@ -1,0 +1,24 @@
+services:
+  traefik:
+    image: traefik:v3.0
+    container_name: traefik-dev
+    command:
+      - "--accesslog=true"
+      - "--log.level=DEBUG"
+      - "--accesslog.format=json"
+      - "--accesslog.fields.defaultmode=keep"
+      - "--configFile=/etc/traefik/traefik.dev.yml"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik.dev.yml:/etc/traefik/traefik.dev.yml:ro
+      - ./dynamic.dev.yml:/etc/traefik/dynamic.dev.yml:ro
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    name: traefik-net
+    driver: bridge

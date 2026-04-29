@@ -1,0 +1,23 @@
+services:
+  s3:
+    image: minio/minio:latest
+    container_name: minio
+    restart: always
+    env_file:
+      - ../../../.env.prod
+    ports:
+      - "9000:9000" # API
+      - "9001:9001" # Console
+    volumes:
+      - s3_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - traefik-net
+
+volumes:
+  s3_data:
+
+networks:
+  traefik-net:
+    name: traefik-net
+    external: true

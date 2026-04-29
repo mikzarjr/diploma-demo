@@ -1,0 +1,5 @@
+http:
+  routers:
+    dashboard:
+      rule: "Host(`localhost`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      service: api@internal
