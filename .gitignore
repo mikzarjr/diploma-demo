@@ -173,3 +173,4 @@ cython_debug/
 /app/frontend/node_modules
 !/app/main/frontend/src/lib/
 /app/main/backend/scripts/seed_passwords.py
+/app/main/models

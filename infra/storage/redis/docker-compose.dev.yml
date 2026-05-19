@@ -13,15 +13,15 @@ services:
       - "allkeys-lru"
     volumes:
       - redis_data:/data
-    ports:
-      - "6379:6379"
+    expose:
+      - "6379"
     networks:
-      - traefik-net
+      - app-internal
 
 volumes:
   redis_data:
 
 networks:
-  traefik-net:
-    name: traefik-net
+  app-internal:
+    name: app-internal
     external: true

@@ -21,4 +21,4 @@ services:
 networks:
   traefik-net:
     name: traefik-net
-    driver: bridge
+    external: true

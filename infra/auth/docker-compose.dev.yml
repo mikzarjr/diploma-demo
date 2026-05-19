@@ -1,0 +1,29 @@
+services:
+  auth:
+    container_name: auth-service-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ../storage/:/app/infra/storage
+      - .:/app
+    env_file:
+      - ../../.env.dev
+      - ./.env.dev
+    expose:
+      - "7001"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.auth-service.entrypoints=web"
+      - "traefik.http.routers.auth-service.rule=PathPrefix(`/main/api/auth`)"
+      - "traefik.http.routers.auth-service.priority=200"
+      - "traefik.http.services.auth-service.loadbalancer.server.port=7001"
+    networks:
+      - traefik-net
+      - app-internal
+
+networks:
+  traefik-net:
+    external: true
+  app-internal:
+    external: true

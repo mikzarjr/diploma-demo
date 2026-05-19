@@ -32,6 +32,7 @@ import {
   Snackbar,
   Avatar,
   InputAdornment,
+  useTheme,
 } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddRounded";
@@ -70,10 +71,9 @@ const ruleTypes = [
 
 type Tone = "violet" | "teal" | "amber" | "rose" | "sky";
 
-const tones: Record<
-  Tone,
-  { bg: string; ring: string; fg: string; avatarBg: string; avatarFg: string }
-> = {
+type ToneStyle = { bg: string; ring: string; fg: string; avatarBg: string; avatarFg: string };
+
+const lightTones: Record<Tone, ToneStyle> = {
   violet: {
     bg: "linear-gradient(180deg, #F5F3FF 0%, #EDE9FE 100%)",
     ring: "rgba(139,92,246,0.20)",
@@ -108,6 +108,44 @@ const tones: Record<
     fg: "#0369A1",
     avatarBg: "#E0F2FE",
     avatarFg: "#0369A1",
+  },
+};
+
+const darkTones: Record<Tone, ToneStyle> = {
+  violet: {
+    bg: "linear-gradient(180deg, rgba(139,92,246,0.10) 0%, rgba(139,92,246,0.04) 100%)",
+    ring: "rgba(139,92,246,0.30)",
+    fg: "#C4B5FD",
+    avatarBg: "#2B2560",
+    avatarFg: "#A5A0FF",
+  },
+  teal: {
+    bg: "linear-gradient(180deg, rgba(52,211,153,0.10) 0%, rgba(16,185,129,0.04) 100%)",
+    ring: "rgba(52,211,153,0.30)",
+    fg: "#6EE7B7",
+    avatarBg: "#0F3B2E",
+    avatarFg: "#6EE7B7",
+  },
+  amber: {
+    bg: "linear-gradient(180deg, rgba(251,191,36,0.10) 0%, rgba(245,158,11,0.04) 100%)",
+    ring: "rgba(251,191,36,0.30)",
+    fg: "#FCD34D",
+    avatarBg: "#3D2A0B",
+    avatarFg: "#FCD34D",
+  },
+  rose: {
+    bg: "linear-gradient(180deg, rgba(244,63,94,0.10) 0%, rgba(244,63,94,0.04) 100%)",
+    ring: "rgba(244,63,94,0.30)",
+    fg: "#FCA5A5",
+    avatarBg: "#3F1717",
+    avatarFg: "#FCA5A5",
+  },
+  sky: {
+    bg: "linear-gradient(180deg, rgba(96,165,250,0.10) 0%, rgba(59,130,246,0.04) 100%)",
+    ring: "rgba(96,165,250,0.30)",
+    fg: "#93C5FD",
+    avatarBg: "#0F2A4D",
+    avatarFg: "#93C5FD",
   },
 };
 
@@ -188,6 +226,8 @@ function checkToForm(check: Check): CheckFormData {
 }
 
 export default function ChecksPage() {
+  const theme = useTheme();
+  const tones = theme.palette.mode === "dark" ? darkTones : lightTones;
   const [checks, setChecks] = useState<Check[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -327,7 +367,10 @@ export default function ChecksPage() {
   const checkSort = useTableSort<Check, CheckSortKey>(filtered, {
     name: (c) => c.name,
     type: (c) => typeLabels[c.type || ""] || c.type,
-    output_type: (c) => outputLabels[c.output_type || ""] || c.output_type,
+    output_type: (c) =>
+      c.type === "rule_based"
+        ? outputLabels["boolean"]
+        : outputLabels[c.output_type || ""] || c.output_type,
     weight: (c) => c.weight,
     active: (c) => (c.active ? 1 : 0),
   });
@@ -592,7 +635,9 @@ export default function ChecksPage() {
                       </TableCell>
                       <TableCell>
                         <Typography sx={{ fontSize: 13, color: "text.secondary" }}>
-                          {outputLabels[check.output_type || ""] || check.output_type}
+                          {check.type === "rule_based"
+                            ? outputLabels["boolean"]
+                            : outputLabels[check.output_type || ""] || check.output_type}
                         </Typography>
                       </TableCell>
                       <TableCell align="center">
@@ -703,38 +748,52 @@ export default function ChecksPage() {
               <Select
                 value={form.type}
                 label="Тип проверки"
-                onChange={(e: SelectChangeEvent) =>
-                  setForm({ ...form, type: e.target.value })
-                }
+                onChange={(e: SelectChangeEvent) => {
+                  const nextType = e.target.value;
+                  setForm({
+                    ...form,
+                    type: nextType,
+                    output_type: nextType === "rule_based" ? "boolean" : form.output_type,
+                  });
+                }}
               >
                 <MenuItem value="rule_based">Правило (rule-based)</MenuItem>
                 <MenuItem value="llm_based">LLM (промпт)</MenuItem>
               </Select>
             </FormControl>
 
-            <FormControl fullWidth>
-              <InputLabel>Тип результата</InputLabel>
-              <Select
-                value={form.output_type}
-                label="Тип результата"
-                onChange={(e: SelectChangeEvent) =>
-                  setForm({ ...form, output_type: e.target.value })
-                }
-              >
-                <MenuItem value="boolean">Да / Нет</MenuItem>
-                <MenuItem value="score">Оценка (0-10)</MenuItem>
-                <MenuItem value="category">Категория</MenuItem>
-              </Select>
-            </FormControl>
+            {form.type === "llm_based" && (
+              <FormControl fullWidth>
+                <InputLabel>Тип результата</InputLabel>
+                <Select
+                  value={form.output_type}
+                  label="Тип результата"
+                  onChange={(e: SelectChangeEvent) =>
+                    setForm({ ...form, output_type: e.target.value })
+                  }
+                >
+                  <MenuItem value="boolean">Да / Нет</MenuItem>
+                  <MenuItem value="score">Оценка (0-10)</MenuItem>
+                  <MenuItem value="category">Категория</MenuItem>
+                </Select>
+              </FormControl>
+            )}
           </Box>
 
-          <Typography variant="caption" color="text.secondary" sx={{ mt: -1.5 }}>
-            {form.output_type === "boolean"
-              ? "Результат: пройдена / не пройдена (да или нет)"
-              : form.output_type === "score"
-                ? "Результат: числовая оценка от 0 до 10"
-                : "Результат: текстовая категория (напр. «позитивный», «нейтральный», «негативный»)"}
-          </Typography>
+          {form.type === "llm_based" && (
+            <Typography variant="caption" color="text.secondary" sx={{ mt: -1.5 }}>
+              {form.output_type === "boolean"
+                ? "Результат: пройдена / не пройдена (да или нет)"
+                : form.output_type === "score"
+                  ? "Результат: числовая оценка от 0 до 10"
+                  : "Результат: текстовая категория (напр. «позитивный», «нейтральный», «негативный»)"}
+            </Typography>
+          )}
+          {form.type === "rule_based" && (
+            <Typography variant="caption" color="text.secondary" sx={{ mt: -1.5 }}>
+              Результат правила всегда «Да / Нет»
+            </Typography>
+          )}
 
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <TextField

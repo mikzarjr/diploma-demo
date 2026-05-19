@@ -19,19 +19,18 @@ class Settings(BaseSettings):
     MINIO_ROOT_PASSWORD: str
     IP: str
 
-    WHISPER_MODEL_DIR: str
     DIARIZATION_MODEL_DIR: str
+    SENTIMENT_MODEL_DIR: str
     HF_TOKEN: str
+    ASR_SERVICE_URL: str = "http://asr:7002"
 
     YANDEX_GPT_API_KEY: str
     YANDEX_GPT_FOLDER_ID: str
     YANDEX_GPT_MODEL: str = "yandexgpt/latest"
     YANDEX_GPT_URL: str = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
 
-    JWT_SECRET: str
-    JWT_ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int
-    REFRESH_TOKEN_EXPIRE_DAYS: int
+    # CORS — exact frontend origin. JWT lives in infra/auth, not here.
+    FRONTEND_ORIGIN: str
 
     REDIS_HOST: str
     REDIS_PORT: int = 6379

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "1min.mp3",
+    "audio_sec": 75.06,
+    "upload_ms": 252.0,
+    "processing_sec": 225.61,
+    "rtf": 3.01,
+    "status": "analyzed",
+    "turns": 13,
+    "checks": 4,
+    "transcript_chars": 1271,
+    "call_id": 94
+  },
+  {
+    "file": "3min.mp3",
+    "audio_sec": 175.87,
+    "upload_ms": 81.0,
+    "processing_sec": 364.84,
+    "rtf": 2.07,
+    "status": "analyzed",
+    "turns": 27,
+    "checks": 4,
+    "transcript_chars": 2617,
+    "call_id": 95
+  },
+  {
+    "file": "7min.mp3",
+    "audio_sec": 432.54,
+    "upload_ms": 134.0,
+    "processing_sec": 600.45,
+    "rtf": 1.39,
+    "status": "timeout",
+    "turns": 0,
+    "checks": 0,
+    "transcript_chars": 0,
+    "call_id": 96
+  }
+]

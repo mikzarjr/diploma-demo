@@ -1,4 +1,13 @@
 http:
+  middlewares:
+    auth-forward:
+      forwardAuth:
+        address: "http://auth-service:7001/main/api/auth/validate"
+        trustForwardHeader: true
+        authResponseHeaders:
+          - X-User-Id
+          - X-User-Role
+
   routers:
     dashboard:
       rule: "Host(`traefik.172.17.0.1`)"

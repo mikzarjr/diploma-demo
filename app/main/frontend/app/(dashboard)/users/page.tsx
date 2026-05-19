@@ -29,6 +29,7 @@ import {
   Tooltip,
   Avatar,
   InputAdornment,
+  useTheme,
 } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddRounded";
@@ -68,10 +69,9 @@ const roleIcons: Record<string, React.ReactElement> = {
   manager: <PersonIcon sx={{ fontSize: 14 }} />,
 };
 
-const tones: Record<
-  Tone,
-  { bg: string; ring: string; fg: string; avatarBg: string; avatarFg: string }
-> = {
+type ToneStyle = { bg: string; ring: string; fg: string; avatarBg: string; avatarFg: string };
+
+const lightTones: Record<Tone, ToneStyle> = {
   violet: {
     bg: "linear-gradient(180deg, #F5F3FF 0%, #EDE9FE 100%)",
     ring: "rgba(139,92,246,0.20)",
@@ -109,6 +109,44 @@ const tones: Record<
   },
 };
 
+const darkTones: Record<Tone, ToneStyle> = {
+  violet: {
+    bg: "linear-gradient(180deg, rgba(139,92,246,0.10) 0%, rgba(139,92,246,0.04) 100%)",
+    ring: "rgba(139,92,246,0.30)",
+    fg: "#C4B5FD",
+    avatarBg: "#2B2560",
+    avatarFg: "#A5A0FF",
+  },
+  teal: {
+    bg: "linear-gradient(180deg, rgba(52,211,153,0.10) 0%, rgba(16,185,129,0.04) 100%)",
+    ring: "rgba(52,211,153,0.30)",
+    fg: "#6EE7B7",
+    avatarBg: "#0F3B2E",
+    avatarFg: "#6EE7B7",
+  },
+  amber: {
+    bg: "linear-gradient(180deg, rgba(251,191,36,0.10) 0%, rgba(245,158,11,0.04) 100%)",
+    ring: "rgba(251,191,36,0.30)",
+    fg: "#FCD34D",
+    avatarBg: "#3D2A0B",
+    avatarFg: "#FCD34D",
+  },
+  rose: {
+    bg: "linear-gradient(180deg, rgba(244,63,94,0.10) 0%, rgba(244,63,94,0.04) 100%)",
+    ring: "rgba(244,63,94,0.30)",
+    fg: "#FCA5A5",
+    avatarBg: "#3F1717",
+    avatarFg: "#FCA5A5",
+  },
+  sky: {
+    bg: "linear-gradient(180deg, rgba(96,165,250,0.10) 0%, rgba(59,130,246,0.04) 100%)",
+    ring: "rgba(96,165,250,0.30)",
+    fg: "#93C5FD",
+    avatarBg: "#0F2A4D",
+    avatarFg: "#93C5FD",
+  },
+};
+
 interface UserFormData {
   name: string;
   phone_number: string;
@@ -119,6 +157,8 @@ interface UserFormData {
 const emptyForm: UserFormData = { name: "", phone_number: "", role: "manager", password: "" };
 
 export default function UsersPage() {
+  const theme = useTheme();
+  const tones = theme.palette.mode === "dark" ? darkTones : lightTones;
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");

@@ -10,13 +10,20 @@ from infra.storage.db.models import Check, CheckResult, User
 router = APIRouter()
 
 
+def _enforce_rule_based_output_type(payload: dict) -> dict:
+    if payload.get("type") == "rule_based":
+        payload["output_type"] = "boolean"
+    return payload
+
+
 @router.post("/", response_model=CheckResponse)
 async def create_check(
         data: CheckCreate,
         db: AsyncSession = Depends(get_db),
         _admin: User = Depends(require_head_or_admin),
 ):
-    check = Check(**data.model_dump())
+    payload = _enforce_rule_based_output_type(data.model_dump())
+    check = Check(**payload)
     db.add(check)
     await db.commit()
     await db.refresh(check)
@@ -67,7 +74,12 @@ async def update_check(
     if not check:
         raise HTTPException(status_code=404, detail="Проверка не найдена")
 
-    for field, value in data.model_dump(exclude_unset=True).items():
+    updates = data.model_dump(exclude_unset=True)
+    target_type = updates.get("type", check.type)
+    if target_type == "rule_based":
+        updates["output_type"] = "boolean"
+
+    for field, value in updates.items():
         setattr(check, field, value)
 
     await db.commit()

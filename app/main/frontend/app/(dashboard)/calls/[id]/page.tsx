@@ -519,19 +519,32 @@ export default function CallDetailPage() {
                           borderRadius: 2.5,
                           cursor: turn.t_start != null ? "pointer" : "default",
                           border: "1px solid",
-                          borderColor: isActive
-                            ? isManager
-                              ? "#C4B5FD"
-                              : "#FBCFCF"
-                            : "transparent",
-                          bgcolor: isActive
-                            ? isManager
-                              ? "#F5F3FF"
-                              : "#FFF8F8"
-                            : "transparent",
+                          borderColor: (t) => {
+                            if (!isActive) return "transparent";
+                            const isDark = t.palette.mode === "dark";
+                            if (isManager)
+                              return isDark ? "rgba(139,133,255,0.40)" : "#C4B5FD";
+                            return isDark ? "rgba(248,113,113,0.30)" : "#FBCFCF";
+                          },
+                          bgcolor: (t) => {
+                            if (!isActive) return "transparent";
+                            const isDark = t.palette.mode === "dark";
+                            if (isManager)
+                              return isDark
+                                ? "rgba(139,133,255,0.10)"
+                                : "#F5F3FF";
+                            return isDark
+                              ? "rgba(248,113,113,0.08)"
+                              : "#FFF8F8";
+                          },
                           transition: "all 0.2s",
                           "&:hover": {
-                            bgcolor: isManager ? "#FBFAFF" : "surface.subtle",
+                            bgcolor: (t) =>
+                              isManager
+                                ? t.palette.mode === "dark"
+                                  ? "rgba(139,133,255,0.06)"
+                                  : "#FBFAFF"
+                                : t.palette.surface.subtle,
                           },
                         }}
                       >
@@ -540,8 +553,12 @@ export default function CallDetailPage() {
                           sx={{
                             width: 32,
                             height: 32,
-                            bgcolor: isManager ? "#EEEDFE" : "#FEE2E2",
-                            color: isManager ? "#4F46E5" : "#B91C1C",
+                            bgcolor: isManager ? "brand.violetTint" : "brand.roseTint",
+                            color: (t) => {
+                              const isDark = t.palette.mode === "dark";
+                              if (isManager) return isDark ? "#A5A0FF" : "#4F46E5";
+                              return isDark ? "#FCA5A5" : "#B91C1C";
+                            },
                             borderRadius: 1.5,
                             flexShrink: 0,
                           }}
@@ -608,8 +625,13 @@ export default function CallDetailPage() {
             <Card
               sx={{
                 mb: 2.5,
-                background: "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)",
-                border: "1px solid #C7EFDF",
+                background: (t) =>
+                  t.palette.mode === "dark"
+                    ? "linear-gradient(135deg, rgba(52,211,153,0.10) 0%, rgba(16,185,129,0.04) 100%)"
+                    : "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)",
+                border: "1px solid",
+                borderColor: (t) =>
+                  t.palette.mode === "dark" ? "rgba(52,211,153,0.25)" : "#C7EFDF",
               }}
             >
               <CardContent sx={{ p: 3 }}>
@@ -619,8 +641,8 @@ export default function CallDetailPage() {
                     sx={{
                       width: 30,
                       height: 30,
-                      bgcolor: "#D1FAE5",
-                      color: "#047857",
+                      bgcolor: "brand.tealTint",
+                      color: (t) => (t.palette.mode === "dark" ? "#6EE7B7" : "#047857"),
                       borderRadius: 1.5,
                     }}
                   >
@@ -674,21 +696,24 @@ export default function CallDetailPage() {
                           p: 1.5,
                           borderRadius: 2.5,
                           border: "1px solid",
-                          borderColor: failed
-                            ? "#FBCFCF"
-                            : passed
-                            ? "#C7EFDF"
-                            : "divider",
-                          bgcolor: failed
-                            ? "linear-gradient(135deg, #FFF8F8 0%, #FEEEEE 100%)"
-                            : passed
-                            ? "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)"
-                            : "transparent",
-                          background: failed
-                            ? "linear-gradient(135deg, #FFF8F8 0%, #FEEEEE 100%)"
-                            : passed
-                            ? "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)"
-                            : "transparent",
+                          borderColor: (t) => {
+                            const isDark = t.palette.mode === "dark";
+                            if (failed) return isDark ? "rgba(248,113,113,0.30)" : "#FBCFCF";
+                            if (passed) return isDark ? "rgba(52,211,153,0.30)" : "#C7EFDF";
+                            return t.palette.divider;
+                          },
+                          background: (t) => {
+                            const isDark = t.palette.mode === "dark";
+                            if (failed)
+                              return isDark
+                                ? "linear-gradient(135deg, rgba(248,113,113,0.10) 0%, rgba(239,68,68,0.04) 100%)"
+                                : "linear-gradient(135deg, #FFF8F8 0%, #FEEEEE 100%)";
+                            if (passed)
+                              return isDark
+                                ? "linear-gradient(135deg, rgba(52,211,153,0.10) 0%, rgba(16,185,129,0.04) 100%)"
+                                : "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)";
+                            return "transparent";
+                          },
                           cursor: hasDetail ? "pointer" : "default",
                           transition: "all 0.2s",
                           "&:hover": hasDetail ? { transform: "translateY(-1px)" } : {},
@@ -700,8 +725,9 @@ export default function CallDetailPage() {
                               sx={{
                                 width: 24,
                                 height: 24,
-                                bgcolor: "#D1FAE5",
-                                color: "#047857",
+                                bgcolor: "brand.tealTint",
+                                color: (t) =>
+                                  t.palette.mode === "dark" ? "#6EE7B7" : "#047857",
                               }}
                             >
                               <CheckCircleIcon sx={{ fontSize: 14 }} />
@@ -712,8 +738,9 @@ export default function CallDetailPage() {
                               sx={{
                                 width: 24,
                                 height: 24,
-                                bgcolor: "#FEE2E2",
-                                color: "#B91C1C",
+                                bgcolor: "brand.roseTint",
+                                color: (t) =>
+                                  t.palette.mode === "dark" ? "#FCA5A5" : "#B91C1C",
                               }}
                             >
                               <CancelIcon sx={{ fontSize: 14 }} />

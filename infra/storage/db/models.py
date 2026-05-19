@@ -25,7 +25,7 @@ class Call(Base):
     id = Column(Integer, primary_key=True, index=True)
 
     audio_id = Column(String)
-    manager_id = Column(Integer, ForeignKey("users.id"))
+    manager_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     client_id = Column(String, nullable=True)
 
     transcript = Column(Text, nullable=True)
@@ -64,7 +64,7 @@ class SpeakerTurn(Base):
     __tablename__ = "speaker_turns"
 
     id = Column(Integer, primary_key=True, index=True)
-    call_id = Column(Integer, ForeignKey("calls.id"))
+    call_id = Column(Integer, ForeignKey("calls.id", ondelete="CASCADE"), nullable=False)
 
     speaker = Column(String)
     text = Column(Text)
@@ -107,9 +107,9 @@ class CheckResult(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    call_id = Column(Integer, ForeignKey("calls.id"))
-    check_id = Column(Integer, ForeignKey("checks.id"))
-    speaker_turn_id = Column(Integer, ForeignKey("speaker_turns.id"), nullable=True)
+    call_id = Column(Integer, ForeignKey("calls.id", ondelete="CASCADE"), nullable=False)
+    check_id = Column(Integer, ForeignKey("checks.id", ondelete="CASCADE"), nullable=False)
+    speaker_turn_id = Column(Integer, ForeignKey("speaker_turns.id", ondelete="CASCADE"), nullable=True)
 
     value_boolean = Column(Boolean, nullable=True)
     value_score = Column(Float, nullable=True)
@@ -132,7 +132,7 @@ class IntegrationLog(Base):
     provider = Column(String, nullable=False, index=True)
     event_type = Column(String, nullable=True)
     external_id = Column(String, nullable=True, index=True)
-    call_id = Column(Integer, ForeignKey("calls.id"), nullable=True)
+    call_id = Column(Integer, ForeignKey("calls.id", ondelete="SET NULL"), nullable=True)
 
     status = Column(String, nullable=False, index=True)
     message = Column(Text, nullable=True)

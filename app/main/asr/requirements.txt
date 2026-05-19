@@ -1,0 +1,17 @@
+fastapi==0.135.3
+uvicorn==0.44.0
+python-multipart==0.0.26
+
+numpy<2
+soundfile==0.13.1
+librosa==0.11.0
+scipy>=1.10,<2.0
+
+huggingface_hub>=0.32,<1.0
+pygtrie>=2.5
+hypothesis>=6.14
+sortedcontainers>=2.4
+kenlm>=0.2.0
+onnxruntime>=1.21,<1.22
+numba==0.61.2
+llvmlite==0.44.0

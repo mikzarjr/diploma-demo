@@ -5,6 +5,7 @@ services:
     restart: always
     env_file:
       - ../../../.env.dev
+    # Dev: keep host publish for MinIO console / S3 client. Prod has only `expose:`.
     ports:
       - "9000:9000" # API
       - "9001:9001" # Console
@@ -12,12 +13,12 @@ services:
       - s3_data:/data
     command: server /data --console-address ":9001"
     networks:
-      - traefik-net
+      - app-internal
 
 volumes:
   s3_data:
 
 networks:
-  traefik-net:
-    name: traefik-net
+  app-internal:
+    name: app-internal
     external: true

@@ -26,6 +26,20 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
+_SENSITIVE_KEYS = {"recording_auth_header", "authorization", "auth_header", "password", "secret", "token"}
+
+
+def _redact_payload(data):
+    if isinstance(data, dict):
+        return {
+            k: ("***REDACTED***" if k.lower() in _SENSITIVE_KEYS and v else _redact_payload(v))
+            for k, v in data.items()
+        }
+    if isinstance(data, list):
+        return [_redact_payload(x) for x in data]
+    return data
+
+
 @router.post(
     "/telephony/webhook",
     response_model=WebhookAcceptedResponse,
@@ -62,7 +76,7 @@ async def telephony_webhook(
         event_type=payload.event_type,
         external_id=payload.external_id,
         status="received",
-        payload=payload.model_dump(mode="json"),
+        payload=_redact_payload(payload.model_dump(mode="json")),
     )
     db.add(log)
     await db.commit()
@@ -163,7 +177,7 @@ def _parse_vats_datetime(raw: Optional[str]) -> Optional[datetime]:
             normalized = f"{raw[0:4]}-{raw[4:6]}-{raw[6:8]}T{raw[9:11]}:{raw[11:13]}:{raw[13:15]}+00:00"
             return datetime.fromisoformat(normalized)
     except Exception:
-        pass
+        logger.warning("Failed to parse VATS datetime: %r", raw, exc_info=True)
     return None
 
 
@@ -239,12 +253,12 @@ async def vats_webhook(
         event_type="call_ended",
         external_id=payload.external_id,
         status="received",
-        payload={
+        payload=_redact_payload({
             "cmd": cmd, "callid": callid, "type": type, "status": status,
             "phone": phone, "user": user, "diversion": diversion,
             "start": start, "duration": duration, "link": link,
             "ext": ext, "groupRealName": groupRealName,
-        },
+        }),
     )
     db.add(log)
     await db.commit()

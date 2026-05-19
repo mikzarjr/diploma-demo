@@ -1,0 +1,19 @@
+FROM python:3.12-slim
+
+RUN apt-get update && \
+    apt-get install -y ffmpeg git cmake build-essential curl && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+ENV PYTHONPATH="/app"
+ENV ENV=prod
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --no-deps pyctcdecode==0.5.0
+RUN pip install --no-cache-dir --no-deps "tone @ git+https://github.com/voicekit-team/T-one.git"
+
+COPY . .
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7002", "--workers", "2", "--log-level", "info"]

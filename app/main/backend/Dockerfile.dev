@@ -9,11 +9,9 @@ ENV PYTHONPATH="/app"
 ENV ENV=dev
 
 COPY requirements.txt .
+RUN pip install --no-cache-dir torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY ./models/whisper-small ./models/whisper-small
-COPY ./models/pyannote-diarization-community-1 ./models/pyannote-diarization-community-1
 
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload", "--log-level", "debug"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--log-level", "info"]

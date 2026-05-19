@@ -7,7 +7,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from core.config import settings
 from infra.storage.s3.config import get_s3_client
 from routers.analytics import router as analytics_router
-from routers.auth import router as auth_router
 from routers.calls import router as calls_router
 from routers.checks import router as checks_router
 from routers.integrations import router as integrations_router
@@ -27,7 +26,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="AI Calls Analytics", root_path="/main", lifespan=lifespan)
 
-app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+# Auth routes live in infra/auth (Traefik routes /main/api/auth/* there).
+# The main backend never serves login/refresh/me/validate.
 app.include_router(calls_router, prefix="/api/calls", tags=["calls"])
 app.include_router(users_router, prefix="/api/users", tags=["users"])
 app.include_router(checks_router, prefix="/api/checks", tags=["checks"])
@@ -35,9 +35,11 @@ app.include_router(analytics_router, prefix="/api/analytics", tags=["analytics"]
 app.include_router(tasks_router, prefix="/api/tasks", tags=["tasks"])
 app.include_router(integrations_router, prefix="/api/integrations", tags=["integrations"])
 
+# Same-origin via Traefik makes CORS mostly moot, but defense-in-depth:
+# pin to the exact frontend origin.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[settings.FRONTEND_ORIGIN],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

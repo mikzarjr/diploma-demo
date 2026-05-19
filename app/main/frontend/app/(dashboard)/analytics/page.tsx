@@ -20,6 +20,7 @@ import {
   Tooltip,
   Avatar,
   Button,
+  useTheme,
 } from "@mui/material";
 import BarChartIcon from "@mui/icons-material/BarChartOutlined";
 import ChecklistIcon from "@mui/icons-material/ChecklistOutlined";
@@ -51,7 +52,7 @@ interface Tone {
   iconBg: string;
 }
 
-const tones: Record<string, Tone> = {
+const lightTones: Record<string, Tone> = {
   violet: {
     bg: "linear-gradient(135deg, #FBFAFF 0%, #F2F0FE 100%)",
     ring: "#E5E2FC",
@@ -84,8 +85,43 @@ const tones: Record<string, Tone> = {
   },
 };
 
+const darkTones: Record<string, Tone> = {
+  violet: {
+    bg: "linear-gradient(135deg, rgba(99,91,255,0.10) 0%, rgba(99,91,255,0.04) 100%)",
+    ring: "rgba(139,133,255,0.30)",
+    icon: "#A5A0FF",
+    iconBg: "#2B2560",
+  },
+  teal: {
+    bg: "linear-gradient(135deg, rgba(52,211,153,0.10) 0%, rgba(16,185,129,0.04) 100%)",
+    ring: "rgba(52,211,153,0.30)",
+    icon: "#6EE7B7",
+    iconBg: "#0F3B2E",
+  },
+  amber: {
+    bg: "linear-gradient(135deg, rgba(251,191,36,0.10) 0%, rgba(245,158,11,0.04) 100%)",
+    ring: "rgba(251,191,36,0.30)",
+    icon: "#FCD34D",
+    iconBg: "#3D2A0B",
+  },
+  sky: {
+    bg: "linear-gradient(135deg, rgba(96,165,250,0.10) 0%, rgba(59,130,246,0.04) 100%)",
+    ring: "rgba(96,165,250,0.30)",
+    icon: "#93C5FD",
+    iconBg: "#0F2A4D",
+  },
+  rose: {
+    bg: "linear-gradient(135deg, rgba(248,113,113,0.10) 0%, rgba(239,68,68,0.04) 100%)",
+    ring: "rgba(248,113,113,0.30)",
+    icon: "#FCA5A5",
+    iconBg: "#3F1717",
+  },
+};
+
 export default function AnalyticsPage() {
   const router = useRouter();
+  const theme = useTheme();
+  const tones = theme.palette.mode === "dark" ? darkTones : lightTones;
   const [managerStats, setManagerStats] = useState<ManagerStatsResponse[]>([]);
   const [checkStats, setCheckStats] = useState<CheckStatsResponse[]>([]);
   const [loading, setLoading] = useState(true);

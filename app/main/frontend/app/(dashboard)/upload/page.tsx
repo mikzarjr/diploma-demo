@@ -21,6 +21,7 @@ import {
   Chip,
 } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material";
+import type { Theme } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUploadOutlined";
 import AudioFileIcon from "@mui/icons-material/AudioFileOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutlined";
@@ -156,29 +157,41 @@ export default function UploadPage() {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const perks = [
+  const perks: Array<{
+    icon: React.ReactNode;
+    label: string;
+    tone: "violet" | "teal" | "amber";
+  }> = [
     {
       icon: <GraphicEqIcon sx={{ fontSize: 18 }} />,
-      label: "Транскрипция Whisper",
-      tint: "#EEEDFE",
-      color: "#4F46E5",
+      label: "Транскрипция T-one",
+      tone: "violet",
     },
     {
       icon: <GroupIcon sx={{ fontSize: 18 }} />,
       label: "Разделение по ролям",
-      tint: "#D1FAE5",
-      color: "#047857",
+      tone: "teal",
     },
     {
       icon: <AutoAwesomeIcon sx={{ fontSize: 18 }} />,
       label: "Оценка YandexGPT",
-      tint: "#FEF3C7",
-      color: "#B45309",
+      tone: "amber",
     },
   ];
 
+  const perkTintKey = {
+    violet: "brand.violetTint" as const,
+    teal: "brand.tealTint" as const,
+    amber: "brand.amberTint" as const,
+  };
+  const perkOnTint = {
+    violet: (t: Theme) => (t.palette.mode === "dark" ? "#A5A0FF" : "#4F46E5"),
+    teal: (t: Theme) => (t.palette.mode === "dark" ? "#6EE7B7" : "#047857"),
+    amber: (t: Theme) => (t.palette.mode === "dark" ? "#FCD34D" : "#B45309"),
+  };
+
   return (
-    <Box className="fade-in" sx={{ maxWidth: 720, mx: "auto" }}>
+    <Box className="fade-in">
       {canChooseManager && (
         <Card sx={{ mb: 2.5 }}>
           <CardContent
@@ -223,7 +236,10 @@ export default function UploadPage() {
       <Card
         sx={{
           overflow: "hidden",
-          background: "linear-gradient(180deg, #FFFFFF 0%, #FAFAF9 100%)",
+          background: (t) =>
+            t.palette.mode === "dark"
+              ? "linear-gradient(180deg, #15151B 0%, #0F0F13 100%)"
+              : "linear-gradient(180deg, #FFFFFF 0%, #FAFAF9 100%)",
         }}
       >
         <CardContent sx={{ p: { xs: 3, md: 4 } }}>
@@ -243,13 +259,23 @@ export default function UploadPage() {
                   borderColor: drag ? "primary.main" : "divider",
                   borderRadius: 4,
                   p: { xs: 4, md: 6 },
+                  minHeight: { xs: 380, md: 520 },
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   textAlign: "center",
                   cursor: "pointer",
                   overflow: "hidden",
                   transition: "all 0.25s ease",
-                  background: drag
-                    ? "linear-gradient(135deg, #F5F3FF 0%, #FCE7F3 100%)"
-                    : "linear-gradient(135deg, #FFFBF2 0%, #FEF4DD 50%, #FDE8E4 100%)",
+                  background: (t) =>
+                    t.palette.mode === "dark"
+                      ? drag
+                        ? "linear-gradient(135deg, rgba(99,91,255,0.18) 0%, rgba(236,72,153,0.10) 100%)"
+                        : "linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.04) 50%, rgba(239,68,68,0.06) 100%)"
+                      : drag
+                        ? "linear-gradient(135deg, #F5F3FF 0%, #FCE7F3 100%)"
+                        : "linear-gradient(135deg, #FFFBF2 0%, #FEF4DD 50%, #FDE8E4 100%)",
                   "&:hover": {
                     borderColor: "primary.main",
                     transform: "translateY(-1px)",
@@ -289,10 +315,14 @@ export default function UploadPage() {
                         width: 52,
                         height: 52,
                         borderRadius: 2.5,
-                        bgcolor: "#fff",
-                        color: ["#635BFF", "#EC4899", "#F59E0B"][i],
-                        border: "1px solid rgba(28,25,23,0.06)",
-                        boxShadow: "0 4px 12px -4px rgba(28,25,23,0.08)",
+                        bgcolor: "background.paper",
+                        color: (t) =>
+                          t.palette.mode === "dark"
+                            ? ["#A5A0FF", "#F472B6", "#FBBF24"][i]
+                            : ["#635BFF", "#EC4899", "#F59E0B"][i],
+                        border: "1px solid",
+                        borderColor: "divider",
+                        boxShadow: (t) => t.palette.elevation.sm,
                         transform: `rotate(${i === 0 ? -8 : i === 2 ? 8 : 0}deg) translateY(${
                           i === 1 ? -4 : 0
                         }px)`,
@@ -348,7 +378,10 @@ export default function UploadPage() {
                       label={f}
                       size="small"
                       sx={{
-                        bgcolor: "rgba(255,255,255,0.7)",
+                        bgcolor: (t) =>
+                          t.palette.mode === "dark"
+                            ? "rgba(255,255,255,0.06)"
+                            : "rgba(255,255,255,0.7)",
                         color: "text.secondary",
                         fontWeight: 600,
                         fontSize: 11,
@@ -387,8 +420,8 @@ export default function UploadPage() {
                       px: 1.5,
                       py: 0.75,
                       borderRadius: 999,
-                      bgcolor: p.tint,
-                      color: p.color,
+                      bgcolor: perkTintKey[p.tone],
+                      color: perkOnTint[p.tone],
                     }}
                   >
                     {p.icon}
@@ -407,9 +440,13 @@ export default function UploadPage() {
                   p: 2,
                   mb: 3,
                   borderRadius: 3,
-                  background: "linear-gradient(135deg, #FBFAFF 0%, #F2F0FE 100%)",
+                  background: (t) =>
+                    t.palette.mode === "dark"
+                      ? "linear-gradient(135deg, rgba(99,91,255,0.10) 0%, rgba(99,91,255,0.04) 100%)"
+                      : "linear-gradient(135deg, #FBFAFF 0%, #F2F0FE 100%)",
                   border: "1px solid",
-                  borderColor: "#E5E2FC",
+                  borderColor: (t) =>
+                    t.palette.mode === "dark" ? "rgba(139,133,255,0.25)" : "#E5E2FC",
                 }}
               >
                 <Avatar
@@ -417,10 +454,14 @@ export default function UploadPage() {
                   sx={{
                     width: 44,
                     height: 44,
-                    bgcolor: "#fff",
-                    color: "primary.dark",
+                    bgcolor: "background.paper",
+                    color: "primary.main",
                     borderRadius: 2.5,
-                    border: "1px solid rgba(99,91,255,0.15)",
+                    border: "1px solid",
+                    borderColor: (t) =>
+                      t.palette.mode === "dark"
+                        ? "rgba(139,133,255,0.30)"
+                        : "rgba(99,91,255,0.15)",
                   }}
                 >
                   <AudioFileIcon />
@@ -524,16 +565,20 @@ export default function UploadPage() {
                     py: 3,
                     px: 2,
                     borderRadius: 3,
-                    background: "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)",
+                    background: (t) =>
+                      t.palette.mode === "dark"
+                        ? "linear-gradient(135deg, rgba(52,211,153,0.10) 0%, rgba(16,185,129,0.04) 100%)"
+                        : "linear-gradient(135deg, #F6FDFB 0%, #E8F9F3 100%)",
                     border: "1px solid",
-                    borderColor: "#C7EFDF",
+                    borderColor: (t) =>
+                      t.palette.mode === "dark" ? "rgba(52,211,153,0.25)" : "#C7EFDF",
                   }}
                 >
                   <Avatar
                     sx={{
                       width: 56,
                       height: 56,
-                      bgcolor: "#fff",
+                      bgcolor: "background.paper",
                       color: "success.main",
                       mx: "auto",
                       mb: 1.5,

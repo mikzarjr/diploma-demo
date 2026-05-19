@@ -33,24 +33,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const stored = authStorage.getUser();
-    const access = authStorage.getAccess();
-    if (stored && access) {
-      setUser(stored);
-    }
-    setLoading(false);
+    let cancelled = false;
+    (async () => {
+      const cached = authStorage.getUser();
+      if (cached) setUser(cached);
+      try {
+        const me = await authApi.me();
+        if (!cancelled) {
+          setUser(me);
+          authStorage.setUser(me);
+        }
+      } catch {
+        if (!cancelled) {
+          setUser(null);
+          authStorage.clear();
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const login = useCallback(async (phoneNumber: string, password: string) => {
     const res = await authApi.login(phoneNumber, password);
-    authStorage.setTokens(res.access_token, res.refresh_token);
     authStorage.setUser(res.user);
     setUser(res.user);
     return res.user;
   }, []);
 
-  const logout = useCallback(() => {
-    authApi.logout();
+  const logout = useCallback(async () => {
+    await authApi.logout();
     setUser(null);
   }, []);
 

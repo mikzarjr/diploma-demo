@@ -12,9 +12,11 @@ python-multipart==0.0.26
 torch==2.8.0
 torchaudio==2.8.0
 transformers==4.46.3
+tiktoken>=0.7,<1.0
 librosa==0.11.0
-pyannote.audio>=4.0,<4.1
+pyannote.audio==4.0.4
 huggingface_hub>=0.32,<1.0
+numpy>=2,<3
 # matplotlib + soundfile pulled by pyannote.audio (>=3.10 / >=0.13)
 
 # Storage

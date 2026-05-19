@@ -5,12 +5,14 @@ services:
     restart: always
     env_file:
       - ../../../.env.dev
+    # Dev: keep host publish for DBeaver. Prod has only `expose:`.
     ports:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
-      - traefik-net
+      - app-internal
+
   migrate:
     build:
       context: .
@@ -20,7 +22,7 @@ services:
     depends_on:
       - db
     networks:
-      - traefik-net
+      - app-internal
     volumes:
       - ./alembic/versions:/app/alembic/versions
 
@@ -28,6 +30,6 @@ volumes:
   db_data:
 
 networks:
-  traefik-net:
-    name: traefik-net
+  app-internal:
+    name: app-internal
     external: true

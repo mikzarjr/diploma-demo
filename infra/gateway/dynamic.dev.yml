@@ -1,4 +1,17 @@
 http:
+  middlewares:
+    # ForwardAuth → infra/auth /validate.
+    # On 200      : injects X-User-Id + X-User-Role headers, request proceeds.
+    # On 302      : browser follows redirect to /main/login (frontend pages).
+    # On 401      : raw 401 to API clients (frontend api.ts handles refresh).
+    auth-forward:
+      forwardAuth:
+        address: "http://auth-service-dev:7001/main/api/auth/validate"
+        trustForwardHeader: true
+        authResponseHeaders:
+          - X-User-Id
+          - X-User-Role
+
   routers:
     dashboard:
       rule: "Host(`localhost`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"

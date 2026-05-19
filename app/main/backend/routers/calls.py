@@ -3,7 +3,7 @@ import uuid
 from datetime import datetime, timezone
 
 from core.config import settings
-from core.deps import get_current_user, get_current_user_from_query_or_header, require_head_or_admin
+from core.deps import get_current_user, require_head_or_admin
 from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, UploadFile
 from fastapi.responses import StreamingResponse
 from schemas.calls import (
@@ -93,7 +93,7 @@ async def get_audio(
         audio_id: str,
         request: Request,
         db: AsyncSession = Depends(get_db),
-        user: User = Depends(get_current_user_from_query_or_header),
+        user: User = Depends(get_current_user),
 ):
     if not _can_see_all(user):
         result = await db.execute(select(Call).where(Call.audio_id == audio_id))
@@ -174,7 +174,7 @@ async def delete_call(
             s3 = get_s3_client()
             s3.delete_object(Bucket=settings.S3_BUCKET_NAME, Key=call.audio_id)
         except Exception:
-            pass
+            logger.exception("S3 delete failed for call_id=%s audio_id=%s", call.id, call.audio_id)
 
     await db.delete(call)
     await db.commit()

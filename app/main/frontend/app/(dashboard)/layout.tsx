@@ -3,8 +3,7 @@
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Box } from "@mui/material";
-import Sidebar, { SIDEBAR_WIDTH } from "@/components/Layout/Sidebar";
-import Header from "@/components/Layout/Header";
+import Sidebar from "@/components/Layout/Sidebar";
 import { useAuth } from "@/context/AuthContext";
 import { canAccess } from "@/lib/rbac";
 
@@ -38,16 +37,15 @@ export default function DashboardLayout({
         component="main"
         sx={{
           flexGrow: 1,
-          ml: `${SIDEBAR_WIDTH}px`,
-          pt: "88px",
+          minWidth: 0,
+          pt: { xs: 2.5, md: 3.5 },
           px: { xs: 2.5, md: 4 },
           pb: 5,
           bgcolor: "background.default",
           minHeight: "100vh",
         }}
       >
-        <Header />
-        <Box sx={{ maxWidth: 1400, mx: "auto" }}>{children}</Box>
+        {children}
       </Box>
     </Box>
   );

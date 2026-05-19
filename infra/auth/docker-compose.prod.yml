@@ -1,0 +1,35 @@
+services:
+  auth:
+    container_name: auth-service
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ../storage/:/app/infra/storage
+    env_file:
+      - ../../.env.prod
+      - ./.env.prod
+    expose:
+      - "7001"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.auth-service.entrypoints=web"
+      - "traefik.http.routers.auth-service.rule=PathPrefix(`/main/api/auth`)"
+      - "traefik.http.routers.auth-service.priority=200"
+      - "traefik.http.services.auth-service.loadbalancer.server.port=7001"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:7001/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      - traefik-net
+      - app-internal
+
+networks:
+  traefik-net:
+    external: true
+  app-internal:
+    external: true

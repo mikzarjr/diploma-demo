@@ -1,0 +1,113 @@
+services:
+  frontend:
+    container_name: main-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    env_file:
+      - ../../.env.prod
+      - ./.env.prod
+      - ./frontend/.env.prod.frontend
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.main-frontend-public.entrypoints=web"
+      - "traefik.http.routers.main-frontend-public.rule=PathPrefix(`/main/login`) || PathPrefix(`/main/_next`) || Path(`/main/favicon.ico`)"
+      - "traefik.http.routers.main-frontend-public.priority=150"
+      - "traefik.http.routers.main-frontend-public.service=main-frontend"
+
+      - "traefik.http.routers.main-frontend.entrypoints=web"
+      - "traefik.http.routers.main-frontend.rule=PathPrefix(`/main`)"
+      - "traefik.http.routers.main-frontend.priority=10"
+      - "traefik.http.routers.main-frontend.middlewares=auth-forward@file"
+      - "traefik.http.routers.main-frontend.service=main-frontend"
+
+      - "traefik.http.services.main-frontend.loadbalancer.server.port=3000"
+    expose:
+      - "3000"
+    restart: always
+    networks:
+      - traefik-net
+
+  backend:
+    container_name: main-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./backend/storage:/storage
+      - ./models:/app/models
+      - ../../infra/storage/:/app/infra/storage
+    env_file:
+      - ../../.env.prod
+      - ./.env.prod
+      - ./backend/.env.prod.backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.main-backend.entrypoints=web"
+      - "traefik.http.routers.main-backend.rule=PathPrefix(`/main/api/`)"
+      - "traefik.http.routers.main-backend.priority=50"
+      - "traefik.http.routers.main-backend.middlewares=auth-forward@file"
+      - "traefik.http.services.main-backend.loadbalancer.server.port=8000"
+    expose:
+      - "8000"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - traefik-net
+      - app-internal
+
+  worker:
+    container_name: main-worker
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    command: ["celery", "-A", "celery_app.celery_app", "worker", "--loglevel=info", "--concurrency=5"]
+    volumes:
+      - ./backend/storage:/storage
+      - ./models:/app/models
+      - ../../infra/storage/:/app/infra/storage
+    env_file:
+      - ../../.env.prod
+      - ./.env.prod
+      - ./backend/.env.prod.backend
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A celery_app.celery_app inspect ping -d celery@$$HOSTNAME | grep -q pong"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - traefik-net
+      - app-internal
+
+  asr:
+    container_name: asr-service
+    build:
+      context: ./asr
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./models/t-one:/app/models/t-one:ro
+    expose:
+      - "7002"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:7002/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - app-internal
+
+networks:
+  traefik-net:
+    external: true
+  app-internal:
+    external: true

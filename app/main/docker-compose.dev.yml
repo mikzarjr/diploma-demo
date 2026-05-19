@@ -1,0 +1,109 @@
+services:
+  frontend:
+    container_name: main-frontend-dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ../../.env.dev
+      - ./.env.dev
+      - ./frontend/.env.dev.frontend
+    labels:
+      - "traefik.enable=true"
+
+      # Public router: login page + Next.js static + favicon — no auth.
+      - "traefik.http.routers.main-frontend-public.entrypoints=web"
+      - "traefik.http.routers.main-frontend-public.rule=PathPrefix(`/main/login`) || PathPrefix(`/main/_next`) || Path(`/main/favicon.ico`)"
+      - "traefik.http.routers.main-frontend-public.priority=150"
+      - "traefik.http.routers.main-frontend-public.service=main-frontend"
+
+      # Gated router: every other /main/* page → ForwardAuth + redirect on 401.
+      - "traefik.http.routers.main-frontend.entrypoints=web"
+      - "traefik.http.routers.main-frontend.rule=PathPrefix(`/main`)"
+      - "traefik.http.routers.main-frontend.priority=10"
+      - "traefik.http.routers.main-frontend.middlewares=auth-forward@file"
+      - "traefik.http.routers.main-frontend.service=main-frontend"
+
+      - "traefik.http.services.main-frontend.loadbalancer.server.port=3000"
+    expose:
+      - "3000"
+    networks:
+      - traefik-net
+
+  backend:
+    container_name: main-backend-dev
+    platform: linux/amd64
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+      platforms:
+        - linux/amd64
+    volumes:
+      - ./backend/storage:/storage
+      - ./models:/app/models
+      - ../../infra/storage/:/app/infra/storage
+    env_file:
+      - ../../.env.dev
+      - ./.env.dev
+      - ./backend/.env.dev.backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.main-backend.entrypoints=web"
+      - "traefik.http.routers.main-backend.rule=PathPrefix(`/main/api/`)"
+      - "traefik.http.routers.main-backend.priority=50"
+      # Auth-only middleware (raw 401 for API clients — no redirect).
+      - "traefik.http.routers.main-backend.middlewares=auth-forward@file"
+      - "traefik.http.services.main-backend.loadbalancer.server.port=8000"
+    expose:
+      - "8000"
+    networks:
+      - traefik-net
+      - app-internal
+
+  worker:
+    container_name: main-worker-dev
+    platform: linux/amd64
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+      platforms:
+        - linux/amd64
+    command: ["celery", "-A", "celery_app.celery_app", "worker", "--loglevel=info", "--concurrency=5"]
+    volumes:
+      - ./backend/storage:/storage
+      - ./models:/app/models
+      - ../../infra/storage/:/app/infra/storage
+    env_file:
+      - ../../.env.dev
+      - ./.env.dev
+      - ./backend/.env.dev.backend
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A celery_app.celery_app inspect ping -d celery@$$HOSTNAME | grep -q pong"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - traefik-net
+      - app-internal
+
+  asr:
+    container_name: asr-service-dev
+    platform: linux/amd64
+    build:
+      context: ./asr
+      dockerfile: Dockerfile.dev
+      platforms:
+        - linux/amd64
+    volumes:
+      - ./models/t-one:/app/models/t-one:ro
+    expose:
+      - "7002"
+    networks:
+      - app-internal
+
+networks:
+  traefik-net:
+    external: true
+  app-internal:
+    external: true

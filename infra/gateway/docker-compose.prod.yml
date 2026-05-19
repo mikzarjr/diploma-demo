@@ -7,19 +7,20 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.network=traefik-net"
       - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.filename=/etc/traefik/dynamic.prod.yml"
+      - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      - "--api.dashboard=true"
       - "--accesslog=true"
-      - "--log.level=DEBUG"
+      - "--log.level=INFO"
     ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "8080:8080" # Traefik dashboard
+      - "80:80"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-#      - ./traefik.prod.yml:/etc/traefik/traefik.prod.yml:ro
-#      - ./dynamic.prod.yml:/etc/traefik/dynamic.prod.yml:ro
-#      - ./certs:/certs #
+      - ./dynamic.prod.yml:/etc/traefik/dynamic.prod.yml:ro
+      - ./certs:/certs
     networks:
       - traefik-net
 

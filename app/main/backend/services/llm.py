@@ -1,3 +1,4 @@
+import json
 import logging
 import re
 
@@ -17,11 +18,11 @@ YANDEX_GPT_URL = settings.YANDEX_GPT_URL
 
 
 class LLMRetryableError(Exception):
-    """HTTP 5xx / 429 / таймаут — повторяемо."""
+    pass
 
 
 class LLMFatalError(Exception):
-    """HTTP 4xx (кроме 429) / конфиг — повторять бесполезно."""
+    pass
 
 
 @retry(
@@ -38,9 +39,7 @@ async def call_yandex_gpt(
         max_tokens: int = 1000,
 ) -> str:
     if not settings.YANDEX_GPT_API_KEY or not settings.YANDEX_GPT_FOLDER_ID:
-        raise LLMFatalError(
-            "YANDEX_GPT_API_KEY or YANDEX_GPT_FOLDER_ID not found"
-        )
+        raise LLMFatalError("YANDEX_GPT_API_KEY or YANDEX_GPT_FOLDER_ID not found")
 
     model_uri = f"gpt://{settings.YANDEX_GPT_FOLDER_ID}/{settings.YANDEX_GPT_MODEL}"
 
@@ -48,7 +47,6 @@ async def call_yandex_gpt(
         "Authorization": f"Api-Key {settings.YANDEX_GPT_API_KEY}",
         "Content-Type": "application/json",
     }
-
     body = {
         "modelUri": model_uri,
         "completionOptions": {
@@ -69,35 +67,19 @@ async def call_yandex_gpt(
         raise LLMRetryableError(f"transport/timeout: {e}") from e
 
     if response.status_code == 429 or response.status_code >= 500:
-        raise LLMRetryableError(
-            f"retryable HTTP {response.status_code}: {response.text[:200]}"
-        )
+        raise LLMRetryableError(f"retryable HTTP {response.status_code}: {response.text[:200]}")
     if response.status_code >= 400:
-        raise LLMFatalError(
-            f"fatal HTTP {response.status_code}: {response.text[:200]}"
-        )
+        raise LLMFatalError(f"fatal HTTP {response.status_code}: {response.text[:200]}")
 
     data = response.json()
-
     alternatives = data.get("result", {}).get("alternatives", [])
     if alternatives:
         return alternatives[0].get("message", {}).get("text", "")
-
     return ""
 
 
 async def identify_manager_speaker(speaker_texts: dict[str, str]) -> str | None:
-    """
-    Given two-or-more speaker tracks (label → concatenated text), ask LLM
-    which one is the sales/support manager (employee of the company),
-    and which is the customer/client.
-
-    Returns the label of the manager track, or None if LLM can't decide.
-    The diarization itself (who said what) is NOT touched here — we only
-    label tracks already split by pyannote/channel VAD.
-    """
     if len(speaker_texts) < 2:
-        # Only one speaker — pick that one as manager by default.
         return next(iter(speaker_texts), None)
 
     if not settings.YANDEX_GPT_API_KEY or not settings.YANDEX_GPT_FOLDER_ID:
@@ -112,10 +94,9 @@ async def identify_manager_speaker(speaker_texts: dict[str, str]) -> str | None:
 
     labels_csv = ", ".join(speaker_texts.keys())
     prompt = (
-        f"Перед тобой расшифровка телефонного звонка, разделённая по дорожкам "
-        f"диаризации. Определи, какая дорожка принадлежит МЕНЕДЖЕРУ компании "
-        f"(сотруднику, который консультирует/продаёт), а какие — КЛИЕНТУ "
-        f"(тот, кто звонит за услугой/товаром).\n\n"
+        f"Перед тобой расшифровка телефонного звонка, разделённая по дорожкам. "
+        f"Определи, какая дорожка принадлежит МЕНЕДЖЕРУ компании (сотруднику, "
+        f"который консультирует/продаёт), а какие — КЛИЕНТУ.\n\n"
         f"Признаки менеджера: представляется от имени компании, задаёт уточняющие "
         f"вопросы по продукту, рассказывает условия, использует деловую речь.\n"
         f"Признаки клиента: задаёт вопросы как покупатель, описывает свою "
@@ -140,97 +121,171 @@ async def identify_manager_speaker(speaker_texts: dict[str, str]) -> str | None:
     for label in speaker_texts:
         if label.upper() in answer:
             return label
-    logger.warning(
-        "LLM returned unrecognized manager label: %r (expected one of %s)",
-        raw, list(speaker_texts.keys()),
-    )
+    logger.warning("LLM returned unrecognized manager label: %r", raw)
     return None
 
 
 async def generate_summary(transcript: str, turns_text: str = "") -> str:
     dialog = turns_text[:4000] if turns_text else transcript[:4000]
-
-    prompt = f"""
-    Составь краткое резюме телефонного звонка (3-5 предложений).
-    Выдели: тему разговора, ключевые договорённости, итог.
-    Диалог: {dialog}
-    """
-
+    prompt = (
+        f"Составь краткое резюме телефонного звонка (3-5 предложений). "
+        f"Выдели: тему разговора, ключевые договорённости, итог.\n"
+        f"Диалог: {dialog}"
+    )
     return await call_yandex_gpt(prompt)
+
+
+_JSON_RE = re.compile(r"\{.*\}", re.DOTALL)
+
+
+def _extract_json(text: str) -> dict | None:
+    if not text:
+        return None
+    match = _JSON_RE.search(text)
+    if not match:
+        return None
+    try:
+        return json.loads(match.group(0))
+    except json.JSONDecodeError:
+        cleaned = match.group(0).replace("\n", " ")
+        try:
+            return json.loads(cleaned)
+        except json.JSONDecodeError:
+            return None
+
+
+def _format_block(output_type: str) -> str:
+    if output_type == "boolean":
+        return '"verdict" — строка "да" или "нет"'
+    if output_type == "score":
+        return '"verdict" — число от 0 до 10'
+    if output_type == "category":
+        return '"verdict" — одно слово-категория'
+    return '"verdict" — короткая строка-ответ'
+
+
+def _build_dialog(turns: list[dict] | None, transcript: str, limit: int = 4000) -> str:
+    if turns:
+        lines = [f"[{t.get('speaker', '?')}]: {(t.get('text') or '').strip()}" for t in turns]
+        text = "\n".join(lines)
+    else:
+        text = transcript or ""
+    return text[:limit]
+
+
+def _parse_verdict(value, output_type: str) -> dict:
+    result = {
+        "value_boolean": None,
+        "value_score": None,
+        "value_category": None,
+    }
+    if value is None:
+        return result
+    s = str(value).strip()
+    if output_type == "boolean":
+        result["value_boolean"] = s.lower().rstrip(".") in ("да", "yes", "true", "1")
+    elif output_type == "score":
+        numbers = re.findall(r"\d+(?:\.\d+)?", s)
+        if numbers:
+            result["value_score"] = min(max(float(numbers[0]), 0), 10)
+    elif output_type == "category":
+        result["value_category"] = s
+    return result
 
 
 async def run_llm_check(
         prompt_template: str,
         transcript: str,
-        turns_text: str,
+        turns: list[dict] | None,
         output_type: str,
 ) -> dict:
+    from services.sentiment import analyze_turns as sentiment_analyze, format_for_prompt as sentiment_format
+
     user_instruction = prompt_template
+    dialog_block = _build_dialog(turns, transcript)
     user_instruction = user_instruction.replace("{{transcript}}", transcript[:4000])
-    user_instruction = user_instruction.replace("{{turns}}", turns_text[:4000])
+    user_instruction = user_instruction.replace("{{turns}}", dialog_block)
     user_instruction = user_instruction.replace("{transcript}", transcript[:4000])
-    user_instruction = user_instruction.replace("{turns}", turns_text[:4000])
+    user_instruction = user_instruction.replace("{turns}", dialog_block)
 
-    dialog = turns_text[:4000] if turns_text else transcript[:4000]
+    fmt = _format_block(output_type)
 
-    if output_type == "boolean":
-        format_instruction = (
-            "Ответь строго в формате:\n"
-            "Первая строка: только «Да» или «Нет» (вердикт).\n"
-            "Вторая строка: краткое пояснение (1-2 предложения).\n"
-            "Пример:\nДа\nМенеджер поздоровался в начале разговора."
+    step1_prompt = (
+        f"Задание: {user_instruction}\n\n"
+        f"Диалог для анализа:\n{dialog_block}\n\n"
+        f"Если для уверенного ответа нужен анализ тональности (sentiment) реплик — "
+        f"верни JSON:\n"
+        f'{{"need_sentiment": true, "reason": "<коротко зачем>"}}\n\n'
+        f"Иначе верни JSON с финальным ответом:\n"
+        f'{{"need_sentiment": false, {fmt}, "explanation": "<1-2 предложения>"}}\n\n'
+        f"Никакого текста вне JSON. Только валидный JSON."
+    )
+
+    logger.info("LLM step1 prompt (%s): %d chars", output_type, len(step1_prompt))
+
+    try:
+        raw_step1 = await call_yandex_gpt(step1_prompt, temperature=0.1, max_tokens=600)
+    except LLMFatalError:
+        raise
+    parsed = _extract_json(raw_step1)
+
+    if parsed and not parsed.get("need_sentiment"):
+        verdict_fields = _parse_verdict(parsed.get("verdict"), output_type)
+        explanation = (parsed.get("explanation") or "").strip()
+        raw_combined = f"{parsed.get('verdict', '')}\n{explanation}".strip()
+        return {
+            **verdict_fields,
+            "raw_response": raw_combined or raw_step1.strip(),
+        }
+
+    if parsed and parsed.get("need_sentiment"):
+        logger.info("LLM requested sentiment: %s", parsed.get("reason", ""))
+        sent = sentiment_analyze(turns or [])
+        sent_block = sentiment_format(sent)
+
+        step2_prompt = (
+            f"Задание: {user_instruction}\n\n"
+            f"Диалог:\n{dialog_block}\n\n"
+            f"Анализ тональности (от модели sentiment):\n{sent_block}\n\n"
+            f"Учти sentiment и верни JSON с финальным ответом:\n"
+            f'{{{fmt}, "explanation": "<1-2 предложения>"}}\n\n'
+            f"Никакого текста вне JSON."
         )
-    elif output_type == "score":
-        format_instruction = (
-            "Ответь строго в формате:\n"
-            "Первая строка: только число от 0 до 10 (оценка).\n"
-            "Вторая строка: краткое пояснение (1-2 предложения).\n"
-            "Пример:\n7\nМенеджер хорошо провёл звонок, но не предложил дополнительные услуги."
-        )
-    elif output_type == "category":
-        format_instruction = (
-            "Ответь строго в формате:\n"
-            "Первая строка: только одно слово — категория.\n"
-            "Вторая строка: краткое пояснение (1-2 предложения).\n"
-            "Пример:\nПозитивный\nКлиент остался доволен и договорился о следующей встрече."
-        )
-    else:
-        format_instruction = "Дай краткий ответ."
+        logger.info("LLM step2 prompt: %d chars", len(step2_prompt))
+        try:
+            raw_step2 = await call_yandex_gpt(step2_prompt, temperature=0.1, max_tokens=600)
+        except LLMFatalError:
+            raise
+        parsed2 = _extract_json(raw_step2)
+        if parsed2 is not None:
+            verdict_fields = _parse_verdict(parsed2.get("verdict"), output_type)
+            explanation = (parsed2.get("explanation") or "").strip()
+            raw_combined = f"{parsed2.get('verdict', '')}\n{explanation}".strip()
+            return {
+                **verdict_fields,
+                "raw_response": raw_combined or raw_step2.strip(),
+            }
+        return _legacy_parse(raw_step2, output_type)
 
-    prompt = f"""
-    Задание: {user_instruction}
-    Диалог для анализа:{dialog}
-    
-    {format_instruction}
-    """
+    return _legacy_parse(raw_step1, output_type)
 
-    logger.info("LLM check prompt (%s): %d chars", output_type, len(prompt))
 
-    raw_response = await call_yandex_gpt(prompt, temperature=0.1)
-
-    logger.info("LLM response: %s", raw_response[:200])
-
+def _legacy_parse(raw_response: str, output_type: str) -> dict:
     result = {
         "value_boolean": None,
         "value_score": None,
         "value_category": None,
-        "raw_response": raw_response.strip(),
+        "raw_response": (raw_response or "").strip(),
     }
-
-    lines = [l.strip() for l in raw_response.strip().split("\n") if l.strip()]
+    lines = [l.strip() for l in (raw_response or "").strip().split("\n") if l.strip()]
     verdict = lines[0].lower().rstrip(".") if lines else ""
 
     if output_type == "boolean":
         result["value_boolean"] = verdict in ("да", "yes", "true", "1")
-
     elif output_type == "score":
         numbers = re.findall(r"\d+(?:\.\d+)?", verdict)
         if numbers:
-            score = float(numbers[0])
-            result["value_score"] = min(max(score, 0), 10)
-
+            result["value_score"] = min(max(float(numbers[0]), 0), 10)
     elif output_type == "category":
-
-        result["value_category"] = lines[0].strip() if lines else raw_response.strip()
-
+        result["value_category"] = lines[0].strip() if lines else (raw_response or "").strip()
     return result
