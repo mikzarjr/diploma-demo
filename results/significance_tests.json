@@ -1,0 +1,43 @@
+{
+  "asr_tone_vs_gigaam": {
+    "model_a": "T-one",
+    "model_b": "GigaAM",
+    "n_paired_files": 1000,
+    "wer_T-one": 0.1989,
+    "wer_GigaAM": 0.2042,
+    "diff_b_minus_a": 0.0053,
+    "diff_95ci": [
+      -0.0049,
+      0.0149
+    ],
+    "ci_includes_zero": true,
+    "p_value_one_sided": 0.1505,
+    "significant_at_0.05": false
+  },
+  "sentiment_mcnemar": [
+    {
+      "model_a": "xlm_roberta_multilingual (cardiffnlp)",
+      "model_b": "rubert_tiny2 (seara)",
+      "n": 900,
+      "both_correct": 311,
+      "both_wrong": 241,
+      "only_a_correct": 199,
+      "only_b_correct": 149,
+      "discordant_pairs": 348,
+      "p_value": 0.00853,
+      "significant_at_0.05": true
+    },
+    {
+      "model_a": "xlm_roberta_multilingual (cardiffnlp)",
+      "model_b": "multilingual_tabularisai",
+      "n": 900,
+      "both_correct": 194,
+      "both_wrong": 293,
+      "only_a_correct": 316,
+      "only_b_correct": 97,
+      "discordant_pairs": 413,
+      "p_value": 0.0,
+      "significant_at_0.05": true
+    }
+  ]
+}

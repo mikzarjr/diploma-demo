@@ -1,0 +1,201 @@
+model,id,gold_topic,hyp_topic,topic_match,rouge_1,rouge_2,rouge_l,gold_summary_len,hyp_summary_len,latency_sec,error
+local_qwen_1_5b,test_4_2,спортивный стадион,Строительство нового олимпийского стадиона,False,0.0889,0.0,0.0889,96,248,6.08,
+local_qwen_1_5b,test_17_1,сестра,Сестра,True,0.0513,0.0,0.0513,37,212,4.394,
+local_qwen_1_5b,test_18_1,плохо себя чувствую,Здоровье,False,0.0,0.0,0.0,76,117,2.754,
+local_qwen_1_5b,test_20_2,работа,Работа на почте,True,0.2182,0.0,0.1455,206,148,4.103,
+local_qwen_1_5b,test_21_3,собеседование,Квалификации и опыт работы,False,0.0741,0.0,0.0741,117,116,3.236,
+local_qwen_1_5b,test_29_2,социальный навык,Общие принципы общения,False,0.1176,0.0,0.1176,82,73,3.362,
+local_qwen_1_5b,test_31_1,решить время,финансовый отчет,False,0.16,0.0,0.16,66,112,2.934,
+local_qwen_1_5b,test_38_1,партнеры по учебе,"Заметки, сонливость, совместная работа",False,0.2051,0.0541,0.2051,132,153,4.673,
+local_qwen_1_5b,test_47_2,Оказание помощи,Домашние обязанности и помощь,False,0.129,0.0,0.129,102,308,6.732,
+local_qwen_1_5b,test_48_3,обсудить погоду,Состояние климата,False,0.0952,0.0,0.0952,62,79,2.384,
+local_qwen_1_5b,test_53_3,Лулу и Вик,Переводчик,False,0.3478,0.0,0.1739,52,88,2.439,
+local_qwen_1_5b,test_54_2,вызов,Звонок о встрече,False,0.3077,0.0,0.1538,83,87,3.03,
+local_qwen_1_5b,test_59_2,разговор на вечеринке,Парень и девушка,False,0.1111,0.0,0.1111,187,205,4.609,
+local_qwen_1_5b,test_63_1,посещение школы,Школа,False,0.1622,0.0,0.1081,139,114,2.616,
+local_qwen_1_5b,test_63_3,показать вокруг школы,Школа,False,0.2667,0.0,0.2,88,114,2.571,
+local_qwen_1_5b,test_66_1,обновление системы,Обновление системы и оборудования,True,0.0741,0.0,0.0741,145,94,2.281,
+local_qwen_1_5b,test_68_3,худеть,диета и спорт,False,0.1111,0.0,0.1111,63,71,2.13,
+local_qwen_1_5b,test_69_3,бронирование столика,Ресторан,False,0.0741,0.0,0.0741,83,128,2.792,
+local_qwen_1_5b,test_76_1,зарезервировать встречу,Sales Forecast Discussion,False,0.08,0.0,0.08,138,174,2.862,
+local_qwen_1_5b,test_85_1,проблема с компьютером,компьютер,False,0.0,0.0,0.0,110,231,3.554,
+local_qwen_1_5b,test_95_1,чаевые,Чаевые,True,0.2667,0.0714,0.2667,104,80,2.662,
+local_qwen_1_5b,test_106_1,политическая партия,Politicians and environmental issues,False,0.2273,0.0952,0.1818,204,92,2.829,
+local_qwen_1_5b,test_108_3,свидетель ограбления,Ограбление,False,0.1333,0.0,0.1333,124,69,2.407,
+local_qwen_1_5b,test_111_1,зарегистрироваться на урок,Comp Lit 287,False,0.321,0.1266,0.2469,361,173,6.02,
+local_qwen_1_5b,test_111_2,Регистрация,Comp Lit 287,False,0.2472,0.046,0.2022,408,173,5.085,
+local_qwen_1_5b,test_116_3,пакет автомойки,Моение машины,False,0.0,0.0,0.0,97,124,3.208,
+local_qwen_1_5b,test_131_1,поэтапный выход на пенсию,Пенсионные изменения и новые возможности,False,0.3529,0.0909,0.2059,265,175,5.055,
+local_qwen_1_5b,test_135_3,новая школьная жизнь,Школьная жизнь,True,0.2553,0.0889,0.1702,118,211,4.226,
+local_qwen_1_5b,test_143_1,занимать деньги,Речь друга,False,0.0426,0.0,0.0426,144,218,4.049,
+local_qwen_1_5b,test_146_3,плоская охота,Квартирный поиск,False,0.1455,0.0377,0.0727,169,245,4.627,
+local_qwen_1_5b,test_149_1,разработка газет,Газеты,False,0.4103,0.2703,0.4103,117,114,3.029,
+local_qwen_1_5b,test_149_3,время основания газеты,Газеты,False,0.4103,0.2703,0.3077,115,114,2.96,
+local_qwen_1_5b,test_150_2,Отправить письмо,Электронная почта и вирусы,False,0.2759,0.0,0.2759,88,161,3.423,
+local_qwen_1_5b,test_152_2,китайская еда,Конфуз в выборе перекуса,False,0.2564,0.0541,0.2051,105,162,3.797,
+local_qwen_1_5b,test_155_2,классическая музыка,Музыкальное образование и влияние музыки на здоровье,False,0.3,0.0345,0.2,303,187,6.408,
+local_qwen_1_5b,test_156_2,прекрасный сосед,Приглашение на ужин,False,0.0444,0.0,0.0444,128,165,4.058,
+local_qwen_1_5b,test_158_3,собственная юридическая контора,Адвокатская контора,False,0.0,0.0,0.0,105,71,2.457,
+local_qwen_1_5b,test_167_1,высадка в аэропорту,Помощь найти Памелу,False,0.125,0.0,0.0625,133,124,3.558,
+local_qwen_1_5b,test_180_2,выпить,Приглашение на встречу,False,0.0571,0.0,0.0571,143,88,2.718,
+local_qwen_1_5b,test_182_1,учетный процесс,Бухгалтерский учет,False,0.0,0.0,0.0,78,139,2.983,
+local_qwen_1_5b,test_184_1,видеопрокат,Фильмовое прокат,False,0.1818,0.0,0.1212,157,106,3.44,
+local_qwen_1_5b,test_187_3,отплатить за удовольствие,Dutch cuisine,False,0.1538,0.0,0.1538,117,46,1.64,
+local_qwen_1_5b,test_189_3,ремонт кухни,Обсуждение необходимости обновления кухни,False,0.3077,0.0,0.3077,104,75,2.51,
+local_qwen_1_5b,test_197_2,ужасный опыт,Случайный встреч с собакой,False,0.05,0.0,0.05,107,141,3.519,
+local_qwen_1_5b,test_200_1,китайская кухня,Китайская кухня,True,0.1905,0.0328,0.0952,255,213,5.641,
+local_qwen_1_5b,test_215_2,диета,Рацион питания,False,0.0,0.0,0.0,49,87,2.143,
+local_qwen_1_5b,test_221_2,успешная презентация,Работа и успех,False,0.2041,0.0426,0.2041,133,191,4.008,
+local_qwen_1_5b,test_229_3,навестить бабушку,Grandmother's knowledge of the city,False,0.0909,0.0,0.0909,49,83,1.971,
+local_qwen_1_5b,test_232_1,прошлый опыт,Прибытие в Мюнхен,False,0.0417,0.0,0.0417,80,282,5.76,
+local_qwen_1_5b,test_234_3,велотур,Велотур по горному озеру,False,0.35,0.1053,0.3,127,135,3.714,
+local_qwen_1_5b,test_242_2,онлайн романтика,Интернет и знакомства,False,0.2353,0.0625,0.2353,109,114,3.104,
+local_qwen_1_5b,test_245_1,зачисление на курсы,Курс естественных наук,False,0.0,0.0,0.0,54,139,3.064,
+local_qwen_1_5b,test_246_3,зеленая жизнь,Environmental activism,False,0.0,0.0,0.0,170,199,3.295,
+local_qwen_1_5b,test_249_1,покупка летней одежды,Летняя одежда,False,0.0,0.0,0.0,102,104,2.674,
+local_qwen_1_5b,test_252_3,решение детских проблем,Ребенок с вредными привычками,False,0.1053,0.0,0.1053,117,161,4.287,
+local_qwen_1_5b,test_258_2,удивительные новости,Мария выходит замуж,False,0.375,0.1429,0.25,60,47,2.164,
+local_qwen_1_5b,test_259_1,занимать деньги,Поддержка пользователя,False,0.1176,0.0,0.1176,64,61,2.058,
+local_qwen_1_5b,test_259_2,просить помощи,Поддержка пользователя,False,0.3158,0.0,0.3158,75,61,1.997,
+local_qwen_1_5b,test_273_3,офисный разговор,Samples,False,0.087,0.0,0.087,91,65,1.601,
+local_qwen_1_5b,test_286_2,отправка пакета,Поиск способа отправки посылки,False,0.1429,0.0769,0.1429,66,155,2.998,
+local_qwen_1_5b,test_288_1,погода,Погода и её влияние,True,0.0,0.0,0.0,69,67,2.375,
+local_qwen_1_5b,test_288_2,погода,Погода и её влияние,True,0.1905,0.0,0.0952,75,67,2.33,
+local_qwen_1_5b,test_306_2,беспокоиться о ком-то,Ребенок,False,0.2222,0.08,0.2222,75,103,2.473,
+local_qwen_1_5b,test_309_2,обсуждение тура,Лондонские достопримечательности,False,0.1053,0.0,0.1053,212,89,3.566,
+local_qwen_1_5b,test_313_2,прощание,Goodbye and future meeting,False,0.0,0.0,0.0,23,60,1.781,
+local_qwen_1_5b,test_315_2,языковая компетенция,English proficiency for work,False,0.2545,0.0377,0.1818,189,219,4.501,
+local_qwen_1_5b,test_344_3,экологические проблемы,Environmental Issues,False,0.0,0.0,0.0,206,206,3.302,
+local_qwen_1_5b,test_364_2,пользование библиотекой,Читательский билет и видео,False,0.1481,0.0,0.1481,78,98,2.552,
+local_qwen_1_5b,test_366_1,сервисная консультация,Банковские услуги,False,0.0556,0.0,0.0556,156,143,3.084,
+local_qwen_1_5b,test_372_1,письмо с запросом,Письменный запрос на работу,False,0.2143,0.0769,0.2143,117,89,3.049,
+local_qwen_1_5b,test_376_3,планирование здания,Строительство нового лабораторного корпуса,False,0.2632,0.0556,0.1053,162,161,3.713,
+local_qwen_1_5b,test_380_1,печать,Почтовые марки,False,0.1739,0.0,0.087,162,171,4.034,
+local_qwen_1_5b,test_383_1,путешествие,Предложение посещения Квебека,False,0.1609,0.0,0.1379,198,415,9.786,
+local_qwen_1_5b,test_394_1,занятия на выходные,Теннис,False,0.2941,0.0,0.2353,98,113,3.018,
+local_qwen_1_5b,test_402_1,исчез кошелек,Утеряна сумка,False,0.1667,0.0,0.0833,81,69,2.201,
+local_qwen_1_5b,test_403_1,мыть посуду,Порядок выполнения обязанностей,False,0.0769,0.0,0.0769,91,90,2.33,
+local_qwen_1_5b,test_410_3,самоанализ в дружбе,Причины и последствия эмоционального разлада между друзьями,False,0.1509,0.0,0.1509,136,196,6.013,
+local_qwen_1_5b,test_412_1,культура быстрого питания,Фаст-фуд и его влияние на культуру США,False,0.2917,0.0435,0.1667,150,175,4.967,
+local_qwen_1_5b,test_415_3,первая встреча соседей,Переезд и общество,False,0.2857,0.0,0.1714,103,112,3.185,
+local_qwen_1_5b,test_422_1,введение преимуществ,"льготы, услуги сетевых расчетов",False,0.0606,0.0,0.0606,120,174,3.435,
+local_qwen_1_5b,test_429_1,описать босса,Работа и взаимодействие с руководством,False,0.12,0.0,0.12,91,242,4.641,
+local_qwen_1_5b,test_433_2,карьерный опыт,Первая работа,False,0.2051,0.0,0.2051,79,177,3.397,
+local_qwen_1_5b,test_433_3,обмен опытом работы,Первая работа,False,0.1026,0.0,0.1026,76,177,3.359,
+local_qwen_1_5b,test_436_2,поездка на такси,Поездка на вокзал,False,0.1667,0.0,0.1667,104,86,2.586,
+local_qwen_1_5b,test_436_3,разговор в машине,Поездка на вокзал,False,0.2609,0.0952,0.1739,75,86,2.539,
+local_qwen_1_5b,test_442_2,График работы,Расписание и встреча,False,0.0645,0.0,0.0645,99,114,2.897,
+local_qwen_1_5b,test_443_2,День Благодарения,Праздничный вечер,False,0.1667,0.0,0.125,146,180,4.375,
+local_qwen_1_5b,test_451_2,Покупка,Китайские искусства,False,0.1026,0.0,0.1026,80,220,4.602,
+local_qwen_1_5b,test_457_2,план празднования,Празднование успеха,False,0.0,0.0,0.0,84,152,3.145,
+local_qwen_1_5b,test_461_3,покупать книги,Книги для чтения в поезде,False,0.0,0.0,0.0,80,124,2.95,
+local_qwen_1_5b,test_466_2,руководство по поиску работы,Работа в EDD,False,0.2424,0.0645,0.1818,121,170,3.246,
+local_qwen_1_5b,test_467_2,обсуждение б/у товара,Подержанные товары,False,0.0,0.0,0.0,116,99,2.439,
+local_qwen_1_5b,test_469_3,ходить по магазинам жаловаться,Завышение цен и последствия,False,0.1071,0.0,0.0714,203,182,4.602,
+local_qwen_1_5b,test_476_2,предложение работы,Работа,False,0.1667,0.0,0.1111,109,116,3.154,
+local_qwen_1_5b,test_478_3,интервью,Магазин велосипедов,False,0.1429,0.037,0.1429,208,183,4.755,
+local_qwen_1_5b,test_479_1,обсуждение возраста,Сравнение возраста,False,0.069,0.0,0.069,124,62,2.192,
+local_qwen_1_5b,test_480_3,ресторан,Заказ пищи,False,0.16,0.087,0.16,102,72,2.597,
+local_qwen_1_5b,test_488_3,представить себя,Разговор о работе и знакомстве,False,0.303,0.129,0.2424,90,138,3.512,
+local_qwen_1_5b,test_497_3,стирка одежды,Стиральная машина,False,0.0465,0.0,0.0465,219,97,3.113,
+local_qwen_1_5b,test_498_1,аренда дома,Новый жилой проект,False,0.2105,0.0,0.1579,95,141,3.453,
+yandex_pro,test_4_2,спортивный стадион,,False,0.0,0.0,0.0,96,0,0.557,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_17_1,сестра,,False,0.0,0.0,0.0,37,0,0.419,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_18_1,плохо себя чувствую,,False,0.0,0.0,0.0,76,0,0.418,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_20_2,работа,,False,0.0,0.0,0.0,206,0,0.45,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_21_3,собеседование,,False,0.0,0.0,0.0,117,0,0.373,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_29_2,социальный навык,,False,0.0,0.0,0.0,82,0,0.365,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_31_1,решить время,,False,0.0,0.0,0.0,66,0,0.367,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_38_1,партнеры по учебе,,False,0.0,0.0,0.0,132,0,0.369,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_47_2,Оказание помощи,,False,0.0,0.0,0.0,102,0,0.37,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_48_3,обсудить погоду,,False,0.0,0.0,0.0,62,0,0.377,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_53_3,Лулу и Вик,,False,0.0,0.0,0.0,52,0,0.372,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_54_2,вызов,,False,0.0,0.0,0.0,83,0,0.384,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_59_2,разговор на вечеринке,,False,0.0,0.0,0.0,187,0,0.38,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_63_1,посещение школы,,False,0.0,0.0,0.0,139,0,0.38,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_63_3,показать вокруг школы,,False,0.0,0.0,0.0,88,0,0.371,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_66_1,обновление системы,,False,0.0,0.0,0.0,145,0,0.368,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_68_3,худеть,,False,0.0,0.0,0.0,63,0,0.429,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_69_3,бронирование столика,,False,0.0,0.0,0.0,83,0,0.664,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_76_1,зарезервировать встречу,,False,0.0,0.0,0.0,138,0,0.481,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_85_1,проблема с компьютером,,False,0.0,0.0,0.0,110,0,0.38,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_95_1,чаевые,,False,0.0,0.0,0.0,104,0,0.447,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_106_1,политическая партия,,False,0.0,0.0,0.0,204,0,0.409,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_108_3,свидетель ограбления,,False,0.0,0.0,0.0,124,0,0.367,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_111_1,зарегистрироваться на урок,,False,0.0,0.0,0.0,361,0,0.37,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_111_2,Регистрация,,False,0.0,0.0,0.0,408,0,0.379,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_116_3,пакет автомойки,,False,0.0,0.0,0.0,97,0,0.371,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_131_1,поэтапный выход на пенсию,,False,0.0,0.0,0.0,265,0,0.387,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_135_3,новая школьная жизнь,,False,0.0,0.0,0.0,118,0,0.378,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_143_1,занимать деньги,,False,0.0,0.0,0.0,144,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_146_3,плоская охота,,False,0.0,0.0,0.0,169,0,0.366,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_149_1,разработка газет,,False,0.0,0.0,0.0,117,0,0.371,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_149_3,время основания газеты,,False,0.0,0.0,0.0,115,0,0.375,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_150_2,Отправить письмо,,False,0.0,0.0,0.0,88,0,0.392,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_152_2,китайская еда,,False,0.0,0.0,0.0,105,0,0.378,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_155_2,классическая музыка,,False,0.0,0.0,0.0,303,0,0.379,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_156_2,прекрасный сосед,,False,0.0,0.0,0.0,128,0,0.37,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_158_3,собственная юридическая контора,,False,0.0,0.0,0.0,105,0,0.371,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_167_1,высадка в аэропорту,,False,0.0,0.0,0.0,133,0,0.363,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_180_2,выпить,,False,0.0,0.0,0.0,143,0,0.372,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_182_1,учетный процесс,,False,0.0,0.0,0.0,78,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_184_1,видеопрокат,,False,0.0,0.0,0.0,157,0,0.569,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_187_3,отплатить за удовольствие,,False,0.0,0.0,0.0,117,0,0.379,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_189_3,ремонт кухни,,False,0.0,0.0,0.0,104,0,0.364,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_197_2,ужасный опыт,,False,0.0,0.0,0.0,107,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_200_1,китайская кухня,,False,0.0,0.0,0.0,255,0,0.379,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_215_2,диета,,False,0.0,0.0,0.0,49,0,0.464,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_221_2,успешная презентация,,False,0.0,0.0,0.0,133,0,0.364,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_229_3,навестить бабушку,,False,0.0,0.0,0.0,49,0,0.377,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_232_1,прошлый опыт,,False,0.0,0.0,0.0,80,0,0.367,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_234_3,велотур,,False,0.0,0.0,0.0,127,0,0.373,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_242_2,онлайн романтика,,False,0.0,0.0,0.0,109,0,0.381,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_245_1,зачисление на курсы,,False,0.0,0.0,0.0,54,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_246_3,зеленая жизнь,,False,0.0,0.0,0.0,170,0,0.377,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_249_1,покупка летней одежды,,False,0.0,0.0,0.0,102,0,0.397,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_252_3,решение детских проблем,,False,0.0,0.0,0.0,117,0,0.375,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_258_2,удивительные новости,,False,0.0,0.0,0.0,60,0,0.378,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_259_1,занимать деньги,,False,0.0,0.0,0.0,64,0,0.372,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_259_2,просить помощи,,False,0.0,0.0,0.0,75,0,0.557,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_273_3,офисный разговор,,False,0.0,0.0,0.0,91,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_286_2,отправка пакета,,False,0.0,0.0,0.0,66,0,0.375,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_288_1,погода,,False,0.0,0.0,0.0,69,0,0.379,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_288_2,погода,,False,0.0,0.0,0.0,75,0,0.386,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_306_2,беспокоиться о ком-то,,False,0.0,0.0,0.0,75,0,0.365,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_309_2,обсуждение тура,,False,0.0,0.0,0.0,212,0,0.376,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_313_2,прощание,,False,0.0,0.0,0.0,23,0,0.366,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_315_2,языковая компетенция,,False,0.0,0.0,0.0,189,0,0.371,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_344_3,экологические проблемы,,False,0.0,0.0,0.0,206,0,0.372,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_364_2,пользование библиотекой,,False,0.0,0.0,0.0,78,0,0.444,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_366_1,сервисная консультация,,False,0.0,0.0,0.0,156,0,0.399,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_372_1,письмо с запросом,,False,0.0,0.0,0.0,117,0,0.379,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_376_3,планирование здания,,False,0.0,0.0,0.0,162,0,0.376,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_380_1,печать,,False,0.0,0.0,0.0,162,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_383_1,путешествие,,False,0.0,0.0,0.0,198,0,0.392,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_394_1,занятия на выходные,,False,0.0,0.0,0.0,98,0,0.388,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_402_1,исчез кошелек,,False,0.0,0.0,0.0,81,0,0.382,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_403_1,мыть посуду,,False,0.0,0.0,0.0,91,0,0.383,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_410_3,самоанализ в дружбе,,False,0.0,0.0,0.0,136,0,0.392,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_412_1,культура быстрого питания,,False,0.0,0.0,0.0,150,0,0.376,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_415_3,первая встреча соседей,,False,0.0,0.0,0.0,103,0,0.391,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_422_1,введение преимуществ,,False,0.0,0.0,0.0,120,0,0.385,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_429_1,описать босса,,False,0.0,0.0,0.0,91,0,0.386,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_433_2,карьерный опыт,,False,0.0,0.0,0.0,79,0,0.408,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_433_3,обмен опытом работы,,False,0.0,0.0,0.0,76,0,0.376,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_436_2,поездка на такси,,False,0.0,0.0,0.0,104,0,0.373,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_436_3,разговор в машине,,False,0.0,0.0,0.0,75,0,0.471,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_442_2,График работы,,False,0.0,0.0,0.0,99,0,0.363,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_443_2,День Благодарения,,False,0.0,0.0,0.0,146,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_451_2,Покупка,,False,0.0,0.0,0.0,80,0,0.391,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_457_2,план празднования,,False,0.0,0.0,0.0,84,0,0.378,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_461_3,покупать книги,,False,0.0,0.0,0.0,80,0,0.377,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_466_2,руководство по поиску работы,,False,0.0,0.0,0.0,121,0,0.376,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_467_2,обсуждение б/у товара,,False,0.0,0.0,0.0,116,0,0.36,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_469_3,ходить по магазинам жаловаться,,False,0.0,0.0,0.0,203,0,0.372,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_476_2,предложение работы,,False,0.0,0.0,0.0,109,0,0.386,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_478_3,интервью,,False,0.0,0.0,0.0,208,0,0.369,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_479_1,обсуждение возраста,,False,0.0,0.0,0.0,124,0,0.374,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_480_3,ресторан,,False,0.0,0.0,0.0,102,0,0.382,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_488_3,представить себя,,False,0.0,0.0,0.0,90,0,0.386,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_497_3,стирка одежды,,False,0.0,0.0,0.0,219,0,0.394,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"
+yandex_pro,test_498_1,аренда дома,,False,0.0,0.0,0.0,95,0,0.394,"HTTP 403: {""error"":{""grpcCode"":7,""httpCode"":403,""message"":""Permission denied"",""httpStatus"":""Forbidden"",""details"":[]}}"

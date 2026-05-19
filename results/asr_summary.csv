@@ -1,0 +1,5 @@
+model_name,n,wer,wer_ci_low,wer_ci_high,wer_ci_width_pp,cer,avg_latency_sec,avg_rtf,errors
+T-one,1000,0.1989,0.1844,0.2147,3.02,0.0866,0.126,0.071,0
+GigaAM,1000,0.2042,0.1897,0.2198,3.01,0.0862,0.722,0.503,0
+Yandex SpeechKit,100,0.2846,0.2249,0.3629,13.8,0.1673,0.78,0.475,0
+Deepgram Nova-3,100,0.3971,0.3223,0.4859,16.36,0.2913,1.911,1.19,0

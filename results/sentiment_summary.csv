@@ -1,0 +1,4 @@
+model,n,errors,accuracy,f1_weighted,avg_latency_ms
+xlm-roberta-multilingual (cardiffnlp),900,0,0.5667,0.5562,54.5
+rubert-tiny2 (seara),900,0,0.5111,0.51,4.0
+multilingual-tabularisai,900,0,0.3233,0.3793,27.2

@@ -1,0 +1,306 @@
+{
+  "asr": {
+    "T-one": {
+      "n_files": 1000,
+      "error_breakdown": {
+        "substitutions": 748,
+        "deletions": 282,
+        "insertions": 131,
+        "sub_pct": 64.4,
+        "del_pct": 24.3,
+        "ins_pct": 11.3
+      },
+      "corr_wer_vs_duration": -0.084,
+      "corr_wer_vs_filler_ratio": -0.062,
+      "share_perfect_files": 0.47,
+      "share_files_wer_over_0.5": 0.132,
+      "top10_worst_wer": [
+        2.0,
+        2.0,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.333,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "GigaAM": {
+      "n_files": 1000,
+      "error_breakdown": {
+        "substitutions": 795,
+        "deletions": 265,
+        "insertions": 131,
+        "sub_pct": 66.8,
+        "del_pct": 22.3,
+        "ins_pct": 11.0
+      },
+      "corr_wer_vs_duration": -0.121,
+      "corr_wer_vs_filler_ratio": -0.092,
+      "share_perfect_files": 0.446,
+      "share_files_wer_over_0.5": 0.129,
+      "top10_worst_wer": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.333
+      ]
+    },
+    "Yandex SpeechKit": {
+      "n_files": 100,
+      "error_breakdown": {
+        "substitutions": 111,
+        "deletions": 57,
+        "insertions": 12,
+        "sub_pct": 61.7,
+        "del_pct": 31.7,
+        "ins_pct": 6.7
+      },
+      "corr_wer_vs_duration": -0.073,
+      "corr_wer_vs_filler_ratio": -0.162,
+      "share_perfect_files": 0.33,
+      "share_files_wer_over_0.5": 0.18,
+      "top10_worst_wer": [
+        2.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.947,
+        0.833
+      ]
+    },
+    "Deepgram Nova-3": {
+      "n_files": 100,
+      "error_breakdown": {
+        "substitutions": 72,
+        "deletions": 172,
+        "insertions": 5,
+        "sub_pct": 28.9,
+        "del_pct": 69.1,
+        "ins_pct": 2.0
+      },
+      "corr_wer_vs_duration": -0.186,
+      "corr_wer_vs_filler_ratio": -0.153,
+      "share_perfect_files": 0.21,
+      "share_files_wer_over_0.5": 0.34,
+      "top10_worst_wer": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "sentiment": {
+    "rubert_tiny2 (seara)": {
+      "confusion_matrix": {
+        "negative": {
+          "negative": 111,
+          "neutral": 172,
+          "positive": 17
+        },
+        "neutral": {
+          "negative": 51,
+          "neutral": 214,
+          "positive": 35
+        },
+        "positive": {
+          "negative": 20,
+          "neutral": 145,
+          "positive": 135
+        }
+      },
+      "per_class": {
+        "negative": {
+          "precision": 0.61,
+          "recall": 0.37,
+          "f1": 0.461
+        },
+        "neutral": {
+          "precision": 0.403,
+          "recall": 0.713,
+          "f1": 0.515
+        },
+        "positive": {
+          "precision": 0.722,
+          "recall": 0.45,
+          "f1": 0.554
+        }
+      },
+      "top_confusion": {
+        "gold→pred": "negative→neutral",
+        "count": 172
+      }
+    },
+    "multilingual_tabularisai": {
+      "confusion_matrix": {
+        "negative": {
+          "negative": 107,
+          "neutral": 44,
+          "positive": 36
+        },
+        "neutral": {
+          "negative": 84,
+          "neutral": 85,
+          "positive": 58
+        },
+        "positive": {
+          "negative": 77,
+          "neutral": 44,
+          "positive": 99
+        }
+      },
+      "per_class": {
+        "negative": {
+          "precision": 0.399,
+          "recall": 0.572,
+          "f1": 0.47
+        },
+        "neutral": {
+          "precision": 0.491,
+          "recall": 0.374,
+          "f1": 0.425
+        },
+        "positive": {
+          "precision": 0.513,
+          "recall": 0.45,
+          "f1": 0.479
+        }
+      },
+      "top_confusion": {
+        "gold→pred": "neutral→negative",
+        "count": 84
+      }
+    },
+    "xlm_roberta_multilingual (cardiffnlp)": {
+      "confusion_matrix": {
+        "negative": {
+          "negative": 208,
+          "neutral": 47,
+          "positive": 45
+        },
+        "neutral": {
+          "negative": 115,
+          "neutral": 106,
+          "positive": 79
+        },
+        "positive": {
+          "negative": 48,
+          "neutral": 56,
+          "positive": 196
+        }
+      },
+      "per_class": {
+        "negative": {
+          "precision": 0.561,
+          "recall": 0.693,
+          "f1": 0.62
+        },
+        "neutral": {
+          "precision": 0.507,
+          "recall": 0.353,
+          "f1": 0.417
+        },
+        "positive": {
+          "precision": 0.613,
+          "recall": 0.653,
+          "f1": 0.632
+        }
+      },
+      "top_confusion": {
+        "gold→pred": "neutral→negative",
+        "count": 115
+      }
+    }
+  },
+  "llm_checklist": {
+    "greeting": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 8,
+      "tn": 1,
+      "precision": 1.0,
+      "recall": 0.273,
+      "f1": 0.429,
+      "error_type": "много пропусков true (FN)"
+    },
+    "self_introduction": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 10,
+      "tn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "error_type": "много пропусков true (FN)"
+    },
+    "needs_discovery": {
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.889,
+      "recall": 1.0,
+      "f1": 0.941,
+      "error_type": "много ложных true (FP)"
+    },
+    "presentation": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 5,
+      "tn": 5,
+      "precision": 1.0,
+      "recall": 0.286,
+      "f1": 0.444,
+      "error_type": "много пропусков true (FN)"
+    },
+    "objection_handling": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 7,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.222,
+      "error_type": "много пропусков true (FN)"
+    },
+    "closing": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 8,
+      "tn": 3,
+      "precision": 1.0,
+      "recall": 0.111,
+      "f1": 0.2,
+      "error_type": "много пропусков true (FN)"
+    },
+    "next_step_set": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 9,
+      "tn": 2,
+      "precision": 1.0,
+      "recall": 0.1,
+      "f1": 0.182,
+      "error_type": "много пропусков true (FN)"
+    }
+  }
+}

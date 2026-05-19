@@ -1,0 +1,1515 @@
+[
+  {
+    "call_id": "call_01",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Алло, добрый день! Это Олег из компании SalesFlow, вы оставляли заявку на нашем сайте.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да, здравствуйте, оставляла, помню.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Удобно сейчас две минуты обсудить, что вас заинтересовало?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Да, давайте. Мы ищем CRM, чтобы менеджеры не теряли заявки.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Понял. А сколько у вас сейчас менеджеров и в чём они ведут учёт?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Восемь человек, всё в Excel и в WhatsApp.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "А чем именно неудобно? Заявки теряются, отчёты не сходятся, или что-то ещё?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "В основном теряются. Менеджер уходит в отпуск — половина клиентов забыта.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "У нас как раз ключевая фишка — автоматическое распределение заявок и напоминания. Если менеджер не ответил за 30 минут — задача уходит другому.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "А сколько это стоит?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "На восемь пользователей — около 14 тысяч в месяц. Но я бы предложил сначала посмотреть, как это работает на демо.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "14 тысяч это многовато, у нас бюджет до 10.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Понимаю. Тогда два варианта: либо рассмотрим тариф с ограничением по интеграциям — будет 9800, либо подберём оптимальную конфигурацию после демо, когда увидим ваши реальные потребности.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 13,
+        "speaker": "client",
+        "text": "Окей, давайте сначала демо.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 14,
+        "speaker": "manager",
+        "text": "Отлично. Когда вам удобно — во вторник в 14:00 или в среду утром?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 15,
+        "speaker": "client",
+        "text": "Вторник в 14:00 подойдёт.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 16,
+        "speaker": "manager",
+        "text": "Зафиксировал — вторник 14:00. Пришлю приглашение в Zoom вам на почту и за час напомню.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 17,
+        "speaker": "client",
+        "text": "Хорошо, спасибо.",
+        "sentiment": "positive"
+      }
+    ],
+    "checklist": {
+      "greeting": true,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 28.6,
+    "summary": "Менеджер продемонстрирует демодемоны CRM системы, затем предложит вариант с ограничением по интеграциям.",
+    "key_facts": [
+      "CRM система нужна для управления заявками",
+      "Клиент имеет 8 менеджеров, которые используют Excel и WhatsApp",
+      "Заявки теряются из-за отсутствия автоматизации",
+      "Автоматическое распределение заявок и напоминание могут решить проблему"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "positive"
+      },
+      {
+        "turn_id": 3,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 15,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 36.9,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 8.64,
+      "llm_sec": 20.29,
+      "total_sec": 28.93
+    }
+  },
+  {
+    "call_id": "call_02",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Алло, добрый день, могу услышать Сергея?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да, я.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Сергей, это WMS-Pro. Мы автоматизируем складской учёт. Удобно две минуты?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Нет, я сейчас занят, перезвоните потом.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "А когда лучше — после обеда сегодня или завтра утром?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Знаете, нам ничего не надо. Спасибо.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Хорошо, понял, всего доброго.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": false,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 0.0,
+    "summary": "",
+    "key_facts": [],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 5,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "no_decision",
+    "quality_score": 8.0,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.16,
+      "llm_sec": 5.93,
+      "total_sec": 6.09
+    }
+  },
+  {
+    "call_id": "call_03",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Анна, здравствуйте, это Дмитрий из агентства ПромоПро. Мы общались на прошлой неделе по контекстной рекламе.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да, помню. Я смотрела ваше КП.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Отлично. У вас остались вопросы по предложению?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Да, у вас стоимость управления 60 тысяч в месяц, а у конкурентов — 35–40.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Понимаю, разница большая. А скажите, у тех агентств — какой средний ROAS они вам обещают?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Они не очень про это говорят, просто описывают, что будут вести кампании.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Это типично. У нас в КП на странице 3 — гарантированный ROAS 4.5, и в договоре прописано: если ниже — возвращаем разницу. То есть 60 тысяч — это не цена ведения, это цена результата.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Хм. Это интересно. А на каких клиентах вы это подтверждали?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "Сейчас в работе 14 e-commerce проектов. Могу прислать 3 кейса в вашей нише — обувь, аксессуары — с цифрами по ROAS за последние полгода. Куда удобнее, на почту?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Да, anna.sokolova@brand.ru, пришлите.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Записал. Я отправлю до конца дня. И давайте назначим следующий звонок: четверг в 11:00 — обсудим кейсы и примем решение?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "Хорошо, четверг 11 подходит.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Отлично, до четверга.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 14.3,
+    "summary": "Менеджер рассказывает о своих преимуществах и предлагает показать примеры работы.",
+    "key_facts": [
+      "Цена управления составляет 60 тысяч в месяц",
+      "Средний ROAS на 3e-commerce проектах составляет 4.5",
+      "Контракт гарантирует возврат разницы между ценой ведения и реальным ROAS"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 11,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "no_decision",
+    "quality_score": 19.4,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.29,
+      "llm_sec": 11.34,
+      "total_sec": 11.62
+    }
+  },
+  {
+    "call_id": "call_04",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Здравствуйте, Игорь Викторович?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Меня зовут Юлия, компания БухОчёт. Вы оставляли запрос на расчёт стоимости обслуживания.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Да, мы хотим уйти от штатного бухгалтера на аутсорс.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Понятно. Расскажите, какая система налогообложения и сколько примерно операций в месяц?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "УСН доходы минус расходы. Операций — примерно 150 в месяц, плюс зарплата на 12 человек.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "А что критично — стоимость или сроки? Или вы боитесь, что что-то сломается при переходе?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Меня больше всего пугает переход. У нас сейчас бухгалтер всё ведёт, и я понятия не имею, как это передать.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "Это самый частый страх. У нас есть стандартная процедура — две недели параллельной работы, мы забираем у вашего бухгалтера документы по чек-листу, и пока он не выходит из проекта — мы не подписываем акт. Деньги не списываются, пока вы не убедитесь, что всё работает.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Так, это уже звучит спокойнее. А цена какая?",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "При ваших объёмах — 28 тысяч в месяц включая зарплату и сдачу отчётности.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "Это меньше, чем мой штатный. Хорошо. Что нужно, чтобы начать?",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Мы готовим договор и чек-лист передачи. Можем встретиться в среду в офисе и подписать — удобно?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 13,
+        "speaker": "client",
+        "text": "В среду в 16:00 подойдёт?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 14,
+        "speaker": "manager",
+        "text": "Да, в 16:00 буду у вас. Адрес — Ленина 5, офис 304? Уточнить?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 15,
+        "speaker": "client",
+        "text": "Да, правильно. До среды.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 16,
+        "speaker": "manager",
+        "text": "До среды, договор пришлю на почту до конца дня.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 14.3,
+    "summary": "Менеджер Юлия рассказывает о том, что они готовы помочь клиенту перейти на аутсорсинг с минимальными потерями. Они предлагают провести два недели параллельной работы и затем заключить договор.",
+    "key_facts": [
+      "УСН доходы минус расходы",
+      "Операций примерно 150 в месяц",
+      "Зарплата на 12 человек"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 7,
+        "label": "negative"
+      },
+      {
+        "turn_id": 9,
+        "label": "positive"
+      },
+      {
+        "turn_id": 13,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 15,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 25.4,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.4,
+      "llm_sec": 13.1,
+      "total_sec": 13.49
+    }
+  },
+  {
+    "call_id": "call_05",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Алё, слушаю.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Здравствуйте, я звоню по поводу вашего сервиса для онбординга.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Да, что вы хотите узнать?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Сколько стоит для 200 сотрудников?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "На 200 человек — 45 тысяч в месяц.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "А что входит?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Всё стандартное: курсы, тесты, треки. На сайте можете посмотреть.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Я не понял, а интеграция с 1С есть?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "Это надо у технарей уточнять, я не знаю.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Понятно. Спасибо, я подумаю.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Ага, всего хорошего.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": false,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 0.0,
+    "summary": "Клиент интересуется ценой и интеграцией с 1С.",
+    "key_facts": [
+      "Цена на 200 сотрудников составляет 45 тысяч в месяц.",
+      "На сайте можно посмотреть все услуги.",
+      "Интеграция с 1С требует дополнительного уточнения."
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 9,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "no_decision",
+    "quality_score": 8.0,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.29,
+      "llm_sec": 11.57,
+      "total_sec": 11.86
+    }
+  },
+  {
+    "call_id": "call_06",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Алло, Виктор Петрович? Это Андрей, ТехноМаш. По вашему запросу на станок с ЧПУ.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да, добрый день.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Расскажите, какие задачи планируете решать на оборудовании? Габариты деталей, материал?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Стальные корпуса, размер до 600 на 400, тиражи до 1000 штук в месяц.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "А точность какая нужна? И сколько типов деталей?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Точность 0.05, типов — около 30.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Понял. У нас под эту задачу подходит модель CNC-450. Но скажу честно: у нас есть две альтернативы. Импортный аналог даёт точность 0.02, но в 1.6 раза дороже. Если вам реально 0.05 хватает — CNC-450 будет оптимален.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "0.05 хватит. А стоимость и сроки?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "3.8 миллиона с пуско-наладкой и обучением оператора. Поставка — 10 недель.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "10 недель долго, нам надо к августу запустить производство.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Сейчас май, если подписываем до 25-го — успеем к 1 августа. Я могу зарезервировать слот на сборочной линии, но это нужно сделать сегодня.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "Нам нужно согласовать с финансовым директором. Когда крайний срок?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "До пятницы. Давайте я подготовлю коммерческое предложение с детализацией и пришлю сегодня до 18:00. Завтра можем созвониться в 11:00 — обсудить ваши вопросы перед встречей с финансистом.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 13,
+        "speaker": "client",
+        "text": "Хорошо, завтра в 11 жду звонок.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 14,
+        "speaker": "manager",
+        "text": "Записал. Виктор Петрович, КП на vinpetrov@zavod.ru — верно?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 15,
+        "speaker": "client",
+        "text": "Да, всё верно.",
+        "sentiment": "positive"
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 14.3,
+    "summary": "Клиент согласился на решение поставки оборудования, но не может принять окончательного решения до 25 мая.",
+    "key_facts": [
+      "Стальные корпуса, размер до 600 на 400, тиражи до 1000 штук в месяц",
+      "Точность 0.05, типов — около 30",
+      "Стоимость и сроки: 3.8 миллиона с пуско-наладкой и обучением оператора, 10 недель"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "positive"
+      },
+      {
+        "turn_id": 3,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 13,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 25.4,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.47,
+      "llm_sec": 14.97,
+      "total_sec": 15.44
+    }
+  },
+  {
+    "call_id": "call_07",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Здравствуйте, Елена! Это Игорь, мы виделись на HR-конференции в марте, я представлял SkillUp.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да-да, помню, у вас тренинги по soft skills.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Точно. Вы тогда говорили, что у вас проблема с middle-менеджерами — конфликты в командах. Удалось что-то сделать?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Ничего не сделали. Стало хуже — двое сотрудников ушли.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Это серьёзно. Я как раз поэтому звоню — мы можем сделать диагностическую сессию для топ-5 ваших руководителей, бесплатно, чтобы понять корень проблемы. Дальше — уже на основании результатов решите, нужны ли тренинги.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Бесплатно? В чём подвох?",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Подвох в том, что после диагностики мы предложим программу. Но если решите не идти дальше — никаких обязательств, отчёт по людям останется у вас.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Ясно. Сколько это займёт времени у моих?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "По 45 минут на человека, можно за два дня. Когда удобно начать?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Давайте через две недели, у меня раньше не получится организовать.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Тогда 26-27 мая. Я пришлю на согласование список вопросов и слоты. На какую почту?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "elena@company.ru",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Записал, отправлю сегодня.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": true,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": true,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 42.9,
+    "summary": "Менеджер Игорь предлагает бесплатную диагностику для решения конфликтов между middle-менеджерами, предложив программу на основе результатов. Клиент Elena согласен на проведение диагностики через две недели.",
+    "key_facts": [
+      "Клиент Elena знает про тренинги SkillUp по soft skills",
+      "У компании есть проблемы с конфликтами между middle-менеджерами",
+      "Есть двое сотрудников уволенных из компании",
+      "Менеджер Игорь предлагает бесплатную диагностику для решения этих проблем"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 3,
+        "label": "negative"
+      },
+      {
+        "turn_id": 7,
+        "label": "neutral"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 48.3,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.34,
+      "llm_sec": 14.89,
+      "total_sec": 15.23
+    }
+  },
+  {
+    "call_id": "call_08",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Алло, добрый день, это юрбюро Соколов и партнёры, Татьяна слушает.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Здравствуйте, мне вас Сидоров порекомендовал.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Алексей Николаевич? Очень приятно. Расскажите, что у вас за вопрос?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Подрядчик не сдал объект, срываются сроки, я хочу разорвать договор.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Понимаю. Договор — какой? Подряд, поставка, что-то ещё? И сумма какая?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Строительный подряд, 8.5 миллионов. Аванс 30%, я уже заплатил.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Срок просрочки сколько уже? И есть ли в договоре условия о санкциях?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Просрочка два месяца. В договоре пеня 0.1% за день.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "Хорошо, ситуация рабочая. Можем сделать так: сейчас составляем досудебную претензию с расчётом неустойки — примерно 510 тысяч за два месяца. Параллельно собираем доказательства просрочки. Если в течение 30 дней подрядчик не реагирует — идём в суд.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "А стоимость ваших услуг?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Досудебная стадия — 80 тысяч фикс. Если идём в суд — 200 тысяч плюс 10% от взысканной суммы.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "Это дорого. У меня же ещё аванс не возвращён.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Я понимаю. Альтернатива — попытаться вернуть аванс через мирные переговоры, но если подрядчик не идёт навстречу, без юридической позиции аванс вы потеряете полностью. Сейчас 80 тысяч на досудебку — это инвестиция в возврат 2.55 миллионов плюс неустойка.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 13,
+        "speaker": "client",
+        "text": "Логично. Хорошо, давайте начнём. Что нужно от меня?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 14,
+        "speaker": "manager",
+        "text": "Договор, все акты, переписку с подрядчиком, платёжки по авансу. Можете прислать в WhatsApp или на почту t.sokolova@lawfirm.ru. Я подготовлю проект претензии за два дня.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 15,
+        "speaker": "client",
+        "text": "Отправлю сегодня вечером на почту.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 16,
+        "speaker": "manager",
+        "text": "Жду документы, в четверг будет готов проект претензии для согласования.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 14.3,
+    "summary": "Клиент хочет разорвать договор по причине просрочки срока выполнения работ.",
+    "key_facts": [
+      "Срок просрочки составляет два месяца.",
+      "Подрядчик не сдал объект.",
+      "Аванс был заплачен.",
+      "Договор стоит 8.5 миллионов рублей."
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 3,
+        "label": "negative"
+      },
+      {
+        "turn_id": 5,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 11,
+        "label": "negative"
+      },
+      {
+        "turn_id": 13,
+        "label": "neutral"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 25.4,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.43,
+      "llm_sec": 11.97,
+      "total_sec": 12.4
+    }
+  },
+  {
+    "call_id": "call_09",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Алло, добрый день, могу услышать Марию?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Её сейчас нет, она в командировке.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "А когда лучше перезвонить?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "В понедельник.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Хорошо, перезвоню в понедельник, спасибо.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": false,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 0.0,
+    "summary": "",
+    "key_facts": [],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      }
+    ],
+    "final_outcome": "no_decision",
+    "quality_score": 8.0,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.14,
+      "llm_sec": 6.52,
+      "total_sec": 6.66
+    }
+  },
+  {
+    "call_id": "call_10",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Добрый день, Денис Сергеевич, это Илья из ФакторПлюс. Удобно говорить?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Да, говорите.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Спасибо. Вы интересовались факторингом для дебиторской задолженности. Расскажите, какой у вас сейчас оборот и средняя отсрочка?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Оборот 80 миллионов в год, отсрочка 60-90 дней.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Понятно, и какой объём дебиторки вы хотели бы профинансировать?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Где-то 15 миллионов в моменте.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Хорошо. У нас комиссия 1.2% в месяц, финансируем до 90% от суммы. На 15 млн получится финансирование 13.5 млн, комиссия около 162 тысяч в месяц.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "1.2% это годовых 15%? Дорого. В банке кредит за 12% дают.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "На первый взгляд да. Но факторинг — это не кредит. Во-первых, нет обременения активов и не нужно залога. Во-вторых, риск неплатежа покупателя — на нас. В-третьих, не нужно ждать одобрения по каждой поставке — лимит работает постоянно.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Ну да, но 15% годовых это всё равно много.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Согласен, точно. Слушайте, давайте посчитаем по вашему конкретному кейсу — пришлите мне пару последних счетов от ваших покупателей, я сделаю расчёт с учётом регресса и без регресса. Возможно, для надёжных покупателей сможем дать 0.9%.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "Ну ладно, давайте посчитаем. Что прислать?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Договор с покупателем, последний акт сверки, пару счетов. На ilya@factor.plus.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 13,
+        "speaker": "client",
+        "text": "Хорошо, завтра пришлю.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 14,
+        "speaker": "manager",
+        "text": "Спасибо. Как получу — в течение суток сделаю детальный расчёт. Созвонимся в среду?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 15,
+        "speaker": "client",
+        "text": "Среда подойдёт, во второй половине дня.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 16,
+        "speaker": "manager",
+        "text": "Тогда среда в 15:00.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": true,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": true,
+      "objection_handling": true,
+      "closing": true,
+      "next_step_set": true
+    },
+    "checklist_score": 85.7,
+    "summary": "Клиент интересуется факторингом для дебиторской задолженности. Менеджер предлагает условия факторинга и предоставляет информацию о расчете.",
+    "key_facts": [
+      "Оборот 80 миллионов в год",
+      "Средняя отсрочка 60-90 дней",
+      "Хотелось бы профинансировать 15 миллионов",
+      "Финансирование составит 13.5 млн",
+      "Риск неплатежа покупателя",
+      "Нельзя ждать одобрения по каждой поставке"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 7,
+        "label": "negative"
+      },
+      {
+        "turn_id": 11,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 13,
+        "label": "positive"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 82.6,
+    "grade": "B",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.46,
+      "llm_sec": 15.53,
+      "total_sec": 16.0
+    }
+  },
+  {
+    "call_id": "call_11",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Здравствуйте, Кирилл? Это Антон из DevHouse. По заявке на разработку личного кабинета.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Здравствуйте, да.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Скажите, Кирилл, какая у вас роль в проекте? Вы тот, кто принимает решение, или мне нужно говорить с кем-то ещё?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Я PM, я готовлю шорт-лист, решение принимает CTO.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Спасибо, что сразу сказали. Тогда вопросы по техническим параметрам — это вам, по бюджету — к CTO?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Да, бюджет — это к нему.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Тогда давайте сделаем так: я задам вам технические вопросы и подготовлю предложение с двумя сценариями — базовый и расширенный. А потом мы вместе с CTO созвонимся обсудить?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Да, это удобно.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "Хорошо. У вас текущий кабинет на чём — Битрикс, что-то самописное?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Самописное на Laravel, но устаревшее, всё в одном бэке.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 10,
+        "speaker": "manager",
+        "text": "Понял. Какой основной функционал нужен в новом ЛК?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 11,
+        "speaker": "client",
+        "text": "Заказы, история платежей, документы для подписания через ЭП.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 12,
+        "speaker": "manager",
+        "text": "Поняал. Я подготовлю предложение. Можем созвон с CTO в пятницу — у меня свободно с 10 до 12 или с 15 до 17.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 13,
+        "speaker": "client",
+        "text": "Уточню и напишу — скорее всего пятница 15:00. Сейчас не подтвержу.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 14,
+        "speaker": "manager",
+        "text": "Хорошо, жду подтверждение. Если до завтра не получу — я вам наберу.",
+        "sentiment": null
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 14.3,
+    "summary": "Менеджер предлагает провести совещание с CTO в пятницу по времени 10:00 или 15:00.",
+    "key_facts": [
+      "PM принимает решение",
+      "CTO решает бюджетные вопросы",
+      "Самописное ЛК на Laravel",
+      "Основной функционал заказов, истории платежей, документов"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 7,
+        "label": "positive"
+      },
+      {
+        "turn_id": 9,
+        "label": "neutral"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 25.4,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.44,
+      "llm_sec": 12.03,
+      "total_sec": 12.47
+    }
+  },
+  {
+    "call_id": "call_12",
+    "transcript": [
+      {
+        "turn_id": 0,
+        "speaker": "manager",
+        "text": "Добрый день, это Артём, ОхранСервис, по вашему запросу на охрану склада.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 1,
+        "speaker": "client",
+        "text": "Слушайте, мне уже четвёртая компания звонит. Сколько можно, ну сколько можно?",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "manager",
+        "text": "Понимаю, простите. У меня к вам короткий вопрос: вы уже выбрали или ещё сравниваете?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 3,
+        "speaker": "client",
+        "text": "Сравниваю. Но устал от одинаковых КП.",
+        "sentiment": "negative"
+      },
+      {
+        "turn_id": 4,
+        "speaker": "manager",
+        "text": "Тогда я не буду отнимать время. Что для вас критично в выборе — цена, время реагирования, что-то ещё?",
+        "sentiment": null
+      },
+      {
+        "turn_id": 5,
+        "speaker": "client",
+        "text": "Время реагирования. У нас один склад на трассе, патруль ГБР должен быть не дольше 10 минут.",
+        "sentiment": "neutral"
+      },
+      {
+        "turn_id": 6,
+        "speaker": "manager",
+        "text": "Понятно. Скажите адрес или координаты — я в течение часа проверю по нашим пунктам реагирования и пришлю реальное время до объекта. Без КП, просто цифру. Если она вас устроит — продолжим, нет — больше не беспокою.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 7,
+        "speaker": "client",
+        "text": "Хорошо, это разумно. Координаты на схеме объекта, скину в WhatsApp.",
+        "sentiment": "positive"
+      },
+      {
+        "turn_id": 8,
+        "speaker": "manager",
+        "text": "Отлично, мой номер — этот же, по которому говорим. Жду схему, отвечу до 17:00.",
+        "sentiment": null
+      },
+      {
+        "turn_id": 9,
+        "speaker": "client",
+        "text": "Ок.",
+        "sentiment": "neutral"
+      }
+    ],
+    "checklist": {
+      "greeting": false,
+      "self_introduction": false,
+      "needs_discovery": true,
+      "presentation": false,
+      "objection_handling": false,
+      "closing": false,
+      "next_step_set": false
+    },
+    "checklist_score": 14.3,
+    "summary": "Клиент сравнивает несколько компаний, но выбрал Ophanserv по времени реагирования.",
+    "key_facts": [
+      "Клиент сравнивает несколько компаний",
+      "Офисные службы выбираются по времени реагирования",
+      "Клиент выбрал Ophanserv"
+    ],
+    "sentiment_overall": "neutral",
+    "sentiment_timeline": [
+      {
+        "turn_id": 1,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 3,
+        "label": "negative"
+      },
+      {
+        "turn_id": 5,
+        "label": "neutral"
+      },
+      {
+        "turn_id": 7,
+        "label": "positive"
+      },
+      {
+        "turn_id": 9,
+        "label": "neutral"
+      }
+    ],
+    "final_outcome": "follow_up_scheduled",
+    "quality_score": 25.4,
+    "grade": "D",
+    "meta": {
+      "llm_model": "local_qwen_1_5b",
+      "llm_error": null,
+      "sentiment_sec": 0.27,
+      "llm_sec": 10.36,
+      "total_sec": 10.62
+    }
+  }
+]

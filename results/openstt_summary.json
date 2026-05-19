@@ -1,0 +1,141 @@
+{
+  "total_files_in_manifest": 12950,
+  "audio_sample_analyzed": 500,
+  "text_sample_analyzed": 5000,
+  "audio": {
+    "duration_sec": {
+      "min": 0.4,
+      "q1": 1.12,
+      "median": 1.65,
+      "q3": 2.42,
+      "max": 17.27,
+      "mean": 2.122
+    },
+    "total_duration_hours_extrapolated": 7.6,
+    "sample_rate_hist": {
+      "16000": 500
+    },
+    "channels_hist": {
+      "1": 500
+    },
+    "sample_width_bytes_hist": {
+      "2": 500
+    }
+  },
+  "text": {
+    "char_len": {
+      "min": 6.0,
+      "q1": 16.0,
+      "median": 26.0,
+      "q3": 43.0,
+      "max": 295.0,
+      "mean": 33.773
+    },
+    "n_tokens": {
+      "min": 1.0,
+      "q1": 3.0,
+      "median": 5.0,
+      "q3": 8.0,
+      "max": 58.0,
+      "mean": 6.071
+    },
+    "filler_ratio": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 1.0,
+      "mean": 0.041
+    },
+    "share_with_latin_token": 0.0,
+    "vocabulary_size_in_sample": 6373,
+    "top_20_tokens": [
+      [
+        "я",
+        1062
+      ],
+      [
+        "не",
+        851
+      ],
+      [
+        "ты",
+        639
+      ],
+      [
+        "в",
+        605
+      ],
+      [
+        "вы",
+        585
+      ],
+      [
+        "что",
+        538
+      ],
+      [
+        "а",
+        472
+      ],
+      [
+        "ну",
+        446
+      ],
+      [
+        "и",
+        427
+      ],
+      [
+        "это",
+        386
+      ],
+      [
+        "да",
+        357
+      ],
+      [
+        "вот",
+        275
+      ],
+      [
+        "у",
+        273
+      ],
+      [
+        "мне",
+        257
+      ],
+      [
+        "с",
+        253
+      ],
+      [
+        "на",
+        234
+      ],
+      [
+        "кто",
+        215
+      ],
+      [
+        "так",
+        213
+      ],
+      [
+        "как",
+        209
+      ],
+      [
+        "вас",
+        209
+      ]
+    ]
+  },
+  "directory_balance": {
+    "n_prefixes": 2917,
+    "min_files_per_prefix": 1,
+    "max_files_per_prefix": 9,
+    "mean_files_per_prefix": 1.71
+  }
+}
